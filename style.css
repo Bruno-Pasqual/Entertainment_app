@@ -17,7 +17,7 @@ body {
 /* ! Começando ------------------------------------------------ */
 #container {
   width: 375px;
-  height: 667px;
+  /* height: 667px; */
   border: 1px solid rgba(255, 255, 255, 0.274);
   overflow: hidden;
 }
@@ -89,6 +89,9 @@ nav {
   overflow-x: auto;
   column-gap: 16px;
 }
+#container_trending_cards::-webkit-scrollbar {
+  width: 0;
+}
 
 .snaps_inline {
   scroll-snap-type: inline mandatory;
@@ -96,10 +99,6 @@ nav {
 
 .snaps_inline > * {
   scroll-snap-align: start;
-}
-
-#container_trending_cards::-webkit-scrollbar {
-  width: 0;
 }
 
 .trending_card {
@@ -114,8 +113,8 @@ nav {
 /* ! Container recomendado ------------------------------------------- */
 #container_recomendado {
   width: 343px;
-  height: auto;
   display: flex;
+  overflow-y: auto;
   flex-wrap: wrap;
   border: 1px solid lightgray;
   margin-bottom: 24px;
@@ -124,7 +123,7 @@ nav {
 
 #container_recommended_cards {
   width: 343px;
-  height: auto;
+  /* height: auto; */
   display: flex;
   flex-wrap: wrap;
   column-gap: 15px;
