@@ -72,7 +72,7 @@ nav {
 /* ! Trending_container ------------------------------------------ */
 #trending_container {
   border: 1px solid lightgray;
-  width: 496px;
+  width: auto;
   height: 181px;
   margin: 0 0 24px 16px;
 }
@@ -88,6 +88,14 @@ nav {
   display: flex;
   overflow-x: auto;
   column-gap: 16px;
+}
+
+.snaps_inline {
+  scroll-snap-type: inline mandatory;
+}
+
+.snaps_inline > * {
+  scroll-snap-align: start;
 }
 
 #container_trending_cards::-webkit-scrollbar {
