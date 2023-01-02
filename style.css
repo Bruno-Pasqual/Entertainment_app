@@ -86,10 +86,16 @@ nav {
 
 #container_trending_cards {
   display: flex;
+  overflow-x: auto;
   column-gap: 16px;
 }
 
+#container_trending_cards::-webkit-scrollbar {
+  width: 0;
+}
+
 .trending_card {
+  flex: 0 0 auto;
   width: 240px;
   height: 140px;
   border-radius: 8px;
