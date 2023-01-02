@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+}
+
+/* ! Começando ------------------------------------------------ */
+#container {
+  width: 375px;
+  height: 667px;
+  background: #10141e;
+  border: 1px solid darkblue;
+  overflow: hidden;
+}
+
+/* ! Nav ------------------------------------------------ */
+nav {
+  width: 375px;
+  height: 49px;
+  background: #161d2f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  margin-bottom: 31px;
+}
+
+#container_icons {
+  display: flex;
+  column-gap: 24px;
+}
+
+#user_icon {
+  width: 24px;
+  height: 21px;
+}
+
+/* ! Container busca ------------------------------------------- */
+#container_busca {
+  width: 257px;
+  height: 24px;
+  margin: 0 0 24px 16px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+}
+
+#search_icon {
+  width: 18px;
+  margin-right: 16px;
+}
+
+#search_input {
+  width: 214px;
+  height: 20px;
+  color: #ffffff;
+  opacity: 0.5;
+  font-weight: 300;
+  background: none;
+  border: none;
+  font-size: 1rem;
+}
+/* ! Trending_container ------------------------------------------ */
+#trending_container {
+  border: 1px solid lightgray;
+  width: 496px;
+  height: 181px;
+  margin: 0 0 24px 16px;
+}
+
+.container_title {
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+#container_trending_cards {
+  display: flex;
+  column-gap: 16px;
+}
+
+.trending_card {
+  width: 240px;
+  height: 140px;
+  border-radius: 8px;
+  border: 1px solid lightgray;
+  background: url('');
+}
+
+/* ! Container recomendado ------------------------------------------- */
+#container_recomendado {
+  width: 343px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid lightgray;
+  margin-bottom: 24px;
+  margin: 0 auto;
+}
+
+#container_recommended_cards {
+  width: 343px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 15px;
+  row-gap: 1rem;
+}
+
+.recommended_card {
+  width: 154px;
+  height: 164px;
+  border: 1px solid lightgray;
+}
