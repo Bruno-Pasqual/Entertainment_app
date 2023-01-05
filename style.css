@@ -107,7 +107,10 @@ nav {
   height: 140px;
   border-radius: 8px;
   border: 1px solid lightgray;
-  background: url('');
+  background: url('./assets/thumbnails/beyond-earth/trending/small.jpg');
+  background-position: center;
+  background-size: cover;
+  position: relative;
 }
 
 /* ! Container recomendado ------------------------------------------- */
@@ -136,6 +139,50 @@ nav {
   border: 1px solid lightgray;
 }
 
-.trending_first_row {
-  
+/* ! Trending card container ---------------- */
+
+.trending_info_container {
+  width: 240px;
+  height: 70px;
+  border-radius: 0px 0px 8px 8px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.0001) 0%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  position: absolute;
+  /* transform: translate(-50%, -50%); */
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0 16px 16px;
 }
+
+.trending_first_row {
+  color: #ffffff;
+  font-weight: 300;
+  display: flex;
+  column-gap: 19px;
+}
+
+.year {
+  margin-right: 10px;
+}
+
+.trending_first_row ul {
+  display: flex;
+  column-gap: 21px;
+}
+
+.trending_first_row {
+  opacity: 0.75;
+}
+
+.nome_bagaceira {
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+/* ! Card recomendado ----------------- */
