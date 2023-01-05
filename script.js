@@ -1,3 +1,3 @@
-fetch('https://server.com/data.json')
+fetch('./data.json')
   .then((response) => response.json())
   .then((json) => console.log(json));
