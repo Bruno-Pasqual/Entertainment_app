@@ -179,10 +179,16 @@ nav {
   opacity: 0.75;
 }
 
-.nome_bagaceira {
+.nome_conteudo {
   color: white;
   font-weight: 500;
   font-size: 15px;
+}
+
+.container_category {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
 }
 
 /* ! Card recomendado ----------------- */
