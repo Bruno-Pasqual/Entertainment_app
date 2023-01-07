@@ -52,3 +52,5 @@ function comecaCodigo() {
     tituloConteudoTrends[i].textContent = `${trending[i].title}`;
   }
 }
+
+//continuar
