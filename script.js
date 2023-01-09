@@ -38,8 +38,15 @@ function comecaCodigo() {
 
   // ------------------------------------------ seleção dos elementos Input
   const pesquisaInput = document.getElementById('search_input');
+  const containerResultado = document.getElementById(
+    'container_resultado_busca'
+  );
+
+  //! Fim da seleção dos elementos -----------------
 
   pesquisaInput.addEventListener('input', () => {
+    //todo -- Aqui será feita a verificação se alguma coisa foi digitada no campo de pesquisa, caso tenha sido,  os container 'trending' e 'recomendado' serão escondidos, e o container "resultado_pesquisa" será revelado. Dentro desse, serão criadas divs, na quantidade correspondente ao número de objetos que atendem a busca, e estas, por fim, uilizarão as informações dos objetos.
+
     //! -------------------
     if (pesquisaInput.value.length === 0) {
       trendingContainer.style.display = `block`;
@@ -47,28 +54,51 @@ function comecaCodigo() {
     } else {
       trendingContainer.style.display = `none`;
       recommendedContainer.style.display = 'none';
+
       let divsContem = [];
+      containerResultado.innerHTML = '';
 
       for (let i = 0; i < dados.length; i++) {
         if (dados[i].title.includes(`${pesquisaInput.value}`)) {
           console.log(dados[i].title, true);
           divsContem.push(dados[i]);
+          containerResultado.innerHTML += `<div class="result_card">
+          <div class="result_card_img"></div>
+          <div class="result_details_container">
+            <div class="result_first_row">
+              <p class="result_year">2019</p>
+              <ul>
+                <il class="result_card_category_container">
+                  <img
+                    src="./assets/icon-category-movie.svg"
+                    alt="movie category icon"
+                    class="recommmended_category_icon"
+                  />
+                  <p class="result_category_name">Movie</p>
+                </il>
+                <il><p class="result_classification">E</p></il>
+              </ul>
+            </div>
+
+            <p class="result_title">The Great Lands</p>
+          </div>
+        </div>`;
         } else {
           console.log('título não incluí');
         }
+
+        //2º ----
+
+        // Último ----
         if (i === dados.length - 1) {
           console.log('-----------------------------');
         }
       }
-      console.log(divsContem);
-
-      divsContem.map((value, index) => {
-        console.log(value.title);
-      });
     }
 
     //! -------------------
   });
+
   //! Começando a lógica do código ---------------------------------------------
 
   // console.log(dados);
@@ -86,12 +116,12 @@ function comecaCodigo() {
     }
   });
 
-  console.log(anosRecomendados);
+  /*   console.log(anosRecomendados);
   console.log(iconesRecomendados);
   console.log(titulosRecomendados);
   console.log(recommended);
   console.log(trending);
-  console.log(cardsTrending);
+  console.log(cardsTrending); */
   //todo -- --------------------- Altera as informações dos container de trending (deixar automático)
 
   for (let i = 0; i < trending.length; i++) {
