@@ -15,23 +15,44 @@ function comecaCodigo() {
   //! Fazendo a seleção dos elementos -----------------
 
   // ----------------------- Seleção dos elementos card trending
+
   const cardsTrending = document.querySelectorAll('.trending_card');
   const yearsOfTrending = document.querySelectorAll('.year');
   const containerInfoType = document.querySelectorAll('.container_category');
   const tituloConteudoTrends = document.querySelectorAll('.nome_conteudo');
 
+  // -------------------- Seleção dos elementos cards recomendados
+
+  const cardsRecomendados = document.querySelectorAll('.recommended_card');
+  const imagensCardsRecomendados = document.querySelectorAll(
+    '.recommended_card_img'
+  );
+  const anosRecomendados = document.querySelectorAll('.recommended_year');
+  const iconesRecomendados = document.querySelectorAll(
+    '.recommended_category_icon'
+  );
+  const titulosRecomendados = document.querySelectorAll('.recommended_title');
+
   // console.log(dados);
 
-  //todo --  cria array dos itens que estão na categoria trending. ----
+  //todo --  cria dois array e organiza os objetos de acordo se tem a propriedade isTrending como true ou false ----
+
   let trending = [];
+  let recommended = [];
+
   dados.map((item) => {
     if (item.isTrending) {
       trending.push(item);
+    } else {
+      recommended.push(item);
     }
   });
+
+  console.log(recommended);
   console.log(trending);
   console.log(cardsTrending);
   //todo -- --------------------- Altera as informações dos container de trending (deixar automático)
+
   for (let i = 0; i < trending.length; i++) {
     if (trending[i].category === 'Movie') {
       containerInfoType[i].innerHTML = `
@@ -51,6 +72,16 @@ function comecaCodigo() {
     yearsOfTrending[i].textContent = `${trending[i].year}`;
     tituloConteudoTrends[i].textContent = `${trending[i].title}`;
   }
+
+  console.log(dados);
+  for (let i = 0; i < cardsRecomendados.length; i++) {
+    imagensCardsRecomendados[
+      i
+    ].style.backgroundImage = `url('${recommended[i].thumbnail.regular.small}')`;
+  }
 }
 
 //continuar
+
+//Fazer no final
+//todo Fazer com que o javascript crie o elemento do container is tRending, de forma que seja possível alterar o json e o programa já se adapte a essa modificação (atualmente as divs foram criadas manualmente, de forma que caso tenha mais filmes e/ou series do que o total de divs criadas, esses excedentes não aparecerão no container do "trending")

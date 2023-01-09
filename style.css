@@ -71,7 +71,7 @@ nav {
 }
 /* ! Trending_container ------------------------------------------ */
 #trending_container {
-  border: 1px solid lightgray;
+  /* border: 1px solid lightgray; */
   width: auto;
   height: 181px;
   margin: 0 0 24px 16px;
@@ -106,7 +106,7 @@ nav {
   width: 240px;
   height: 140px;
   border-radius: 8px;
-  border: 1px solid lightgray;
+  /* border: 1px solid lightgray; */
   background: url('./assets/thumbnails/beyond-earth/trending/small.jpg');
   background-position: center;
   background-size: cover;
@@ -119,7 +119,7 @@ nav {
   display: flex;
   overflow-y: auto;
   flex-wrap: wrap;
-  border: 1px solid rgba(211, 211, 211, 0.123);
+  /* border: 1px solid rgba(211, 211, 211, 0.123); */
   margin-bottom: 24px;
   margin: 0 auto;
 }
