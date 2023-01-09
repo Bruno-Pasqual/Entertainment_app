@@ -16,6 +16,7 @@ function comecaCodigo() {
 
   // ----------------------- Seleção dos elementos card trending
 
+  const trendingContainer = document.getElementById('trending_container');
   const cardsTrending = document.querySelectorAll('.trending_card');
   const yearsOfTrending = document.querySelectorAll('.year');
   const containerInfoType = document.querySelectorAll('.container_category');
@@ -23,6 +24,7 @@ function comecaCodigo() {
 
   // -------------------- Seleção dos elementos cards recomendados
 
+  const recommendedContainer = document.getElementById('container_recomendado');
   const cardsRecomendados = document.querySelectorAll('.recommended_card');
   const imagensCardsRecomendados = document.querySelectorAll(
     '.recommended_card_img'
@@ -35,6 +37,39 @@ function comecaCodigo() {
   const titulosRecomendados = document.querySelectorAll('.recommended_title');
 
   // ------------------------------------------ seleção dos elementos Input
+  const pesquisaInput = document.getElementById('search_input');
+
+  pesquisaInput.addEventListener('input', () => {
+    //! -------------------
+    if (pesquisaInput.value.length === 0) {
+      trendingContainer.style.display = `block`;
+      recommendedContainer.style.display = 'flex';
+    } else {
+      trendingContainer.style.display = `none`;
+      recommendedContainer.style.display = 'none';
+      let divsContem = [];
+
+      for (let i = 0; i < dados.length; i++) {
+        if (dados[i].title.includes(`${pesquisaInput.value}`)) {
+          console.log(dados[i].title, true);
+          divsContem.push(dados[i]);
+        } else {
+          console.log('título não incluí');
+        }
+        if (i === dados.length - 1) {
+          console.log('-----------------------------');
+        }
+      }
+      console.log(divsContem);
+
+      divsContem.map((value, index) => {
+        console.log(value.title);
+      });
+    }
+
+    //! -------------------
+  });
+  //! Começando a lógica do código ---------------------------------------------
 
   // console.log(dados);
 
@@ -95,6 +130,8 @@ function comecaCodigo() {
     titulosRecomendados[i].textContent = `${recommended[i].title}`;
   }
 }
+
+function realizaBusca() {}
 
 //continuar
 
