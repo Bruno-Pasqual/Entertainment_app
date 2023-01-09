@@ -46,16 +46,16 @@ nav {
 
 /* ! Container busca ------------------------------------------- */
 #container_busca {
-  width: 257px;
+  width: 267px;
   height: 24px;
   margin: 0 0 24px 16px;
-  border: 1px solid white;
   display: flex;
   align-items: center;
+  /* justify-content: center; */
 }
 
 #search_icon {
-  width: 18px;
+  height: 18px;
   margin-right: 16px;
 }
 
@@ -64,11 +64,20 @@ nav {
   height: 20px;
   color: #ffffff;
   opacity: 0.5;
-  font-weight: 300;
+  font-weight: light;
   background: none;
   border: none;
   font-size: 1rem;
+  font-weight: 300;
 }
+
+#search_input:focus {
+  color: white;
+  opacity: 1;
+  border: none;
+  outline: none;
+}
+
 /* ! Trending_container ------------------------------------------ */
 #trending_container {
   /* border: 1px solid lightgray; */
@@ -122,6 +131,7 @@ nav {
   /* border: 1px solid rgba(211, 211, 211, 0.123); */
   margin-bottom: 24px;
   margin: 0 auto;
+  display: none;
 }
 
 #container_recommended_cards {
@@ -136,7 +146,6 @@ nav {
 .recommended_card {
   width: 164px;
   height: 154px;
-  /* border: 1px solid lightgray; */
 }
 
 /* ! Trending card container ---------------- */
@@ -245,4 +254,13 @@ nav {
   color: white;
   font-size: 14px;
   font-weight: 500;
+}
+
+/* ! Container busca */
+#container_resultado_busca {
+  min-height: 534px;
+}
+
+.hidden {
+  display: none;
 }

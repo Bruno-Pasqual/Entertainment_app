@@ -29,9 +29,12 @@ function comecaCodigo() {
   );
   const anosRecomendados = document.querySelectorAll('.recommended_year');
   const iconesRecomendados = document.querySelectorAll(
-    '.recommended_category_icon'
+    '.recommmended_category_icon'
   );
+  const categoryTags = document.querySelectorAll('.recommended_category_name');
   const titulosRecomendados = document.querySelectorAll('.recommended_title');
+
+  // ------------------------------------------ seleção dos elementos Input
 
   // console.log(dados);
 
@@ -48,6 +51,9 @@ function comecaCodigo() {
     }
   });
 
+  console.log(anosRecomendados);
+  console.log(iconesRecomendados);
+  console.log(titulosRecomendados);
   console.log(recommended);
   console.log(trending);
   console.log(cardsTrending);
@@ -78,6 +84,15 @@ function comecaCodigo() {
     imagensCardsRecomendados[
       i
     ].style.backgroundImage = `url('${recommended[i].thumbnail.regular.small}')`;
+    anosRecomendados[i].textContent = `${recommended[i].year}`;
+    if (recommended[i].category === 'Movie') {
+      iconesRecomendados[i].src = `./assets/icon-category-movie.svg`;
+      categoryTags[i].textContent = 'Movie';
+    } else {
+      iconesRecomendados[i].src = `./assets/icon-category-tv.svg`;
+      categoryTags[i].textContent = 'TV';
+    }
+    titulosRecomendados[i].textContent = `${recommended[i].title}`;
   }
 }
 
