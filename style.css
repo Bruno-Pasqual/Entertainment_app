@@ -276,6 +276,7 @@ nav {
   flex-wrap: wrap;
   margin: 0 auto;
   margin-bottom: 24px;
+  display: none;
 }
 
 .result_card {
