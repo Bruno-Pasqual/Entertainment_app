@@ -51,15 +51,21 @@ function comecaCodigo() {
     if (pesquisaInput.value.length === 0) {
       trendingContainer.style.display = `block`;
       recommendedContainer.style.display = 'flex';
+      containerResultado.style.display = 'none';
     } else {
       trendingContainer.style.display = `none`;
       recommendedContainer.style.display = 'none';
+      containerResultado.style.display = 'flex';
 
       let divsContem = [];
       containerResultado.innerHTML = '';
 
       for (let i = 0; i < dados.length; i++) {
-        if (dados[i].title.includes(`${pesquisaInput.value}`)) {
+        if (
+          dados[i].title
+            .toLowerCase()
+            .includes(`${pesquisaInput.value.toLowerCase()}`)
+        ) {
           console.log(dados[i].title, true);
           divsContem.push(dados[i]);
           containerResultado.innerHTML += `<div class="result_card">

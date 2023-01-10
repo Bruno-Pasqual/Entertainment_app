@@ -20,6 +20,7 @@ body {
   /* height: 667px; */
   border: 1px solid rgba(255, 255, 255, 0.274);
   overflow: hidden;
+  min-height: 667px;
 }
 
 /* ! Nav ------------------------------------------------ */
@@ -123,15 +124,14 @@ nav {
 }
 
 /* ! Container recomendado ------------------------------------------- */
-#container_recomendado,
-#container_resultado_busca {
+#container_recomendado {
   width: 343px;
   display: flex;
   overflow-y: auto;
   flex-wrap: wrap;
   /* border: 1px solid rgba(211, 211, 211, 0.123); */
-  margin-bottom: 24px;
   margin: 0 auto;
+  margin-bottom: 24px;
 }
 
 #container_recommended_cards {
@@ -267,7 +267,19 @@ nav {
 
 /* ! Container busca ----------------- */
 #container_resultado_busca {
-  min-height: 534px;
+  /* min-height: 534px; */
   column-gap: 11px;
   row-gap: 1rem;
+  width: 343px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-bottom: 24px;
+}
+
+.result_card {
+  border: 1px solid red;
+  height: 154px;
+  width: 164px;
 }
