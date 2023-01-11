@@ -43,6 +43,7 @@ function comecaCodigo() {
   const containerResultado = document.getElementById(
     'container_resultado_busca'
   );
+  let navIcons = document.querySelectorAll('.nav_icon');
 
   //! Fim da seleção dos elementos -----------------
 
@@ -72,7 +73,32 @@ function comecaCodigo() {
       tvSeries.push(item);
     }
   });
+
+  //! Salvando arrays no localStorage ---------------------------
+
+  localStorage.setItem('movies', JSON.stringify(movies));
+  localStorage.setItem('tvSeries', JSON.stringify(tvSeries));
+  localStorage.setItem('paginaAtiva', 1);
+
+  // Mudando a variável de página ativa no localStorage
+  navIcons.forEach((elemento, index) => {
+    elemento.addEventListener('click', () => {
+      if (index === 0 || index === 1) {
+        localStorage.setItem('paginaAtiva', 1);
+      } else if (index === 2) {
+        localStorage.setItem('paginaAtiva', 2);
+      } else if (index === 3) {
+        localStorage.setItem('paginaAtiva', 3);
+      } else if (index === 4) {
+        localStorage.setItem('paginaAtiva', 4);
+      }
+    });
+  });
+
+  //! Salvando arrays no localStorage ---------------------------
+
   console.log(dados);
+  console.log(navIcons);
 
   //todo -- --------------------- Altera as informações dos container de trending (deixar automático)
 
