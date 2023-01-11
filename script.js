@@ -78,7 +78,7 @@ function comecaCodigo() {
                   <img
                     src="./assets/icon-category-movie.svg"
                     alt="movie category icon"
-                    class="recommmended_category_icon"
+                    class="result_category_icon"
                   />
                   <p class="result_category_name">Movie</p>
                 </il>
@@ -98,6 +98,40 @@ function comecaCodigo() {
         // Último ----
         if (i === dados.length - 1) {
           console.log('-----------------------------');
+          console.log(divsContem);
+        }
+      }
+
+      //Colocar alterações das divs resultados aqui
+
+      const cardsResultados = document.querySelectorAll('.result_card');
+      const imagesResultados = document.querySelectorAll('.result_card_img');
+      const anosResultados = document.querySelectorAll('.result_year');
+      const categoriasResultados = document.querySelectorAll(
+        '.result_category_name'
+      );
+      const classificacoesResultados = document.querySelectorAll(
+        '.result_classification'
+      );
+      const nomesResultados = document.querySelectorAll('.result_title');
+      const iconesCategoriaResultados = document.querySelectorAll(
+        '.result_category_icon'
+      );
+
+      for (let i = 0; i < divsContem.length; i++) {
+        //todo -- Loop for que irá interar sobre o array "divsContem" e irá alterar as informações dos "cardsResultados" com os objetos que estiverem lá.
+
+        imagesResultados[
+          i
+        ].style.backgroundImage = `url('${divsContem[i].thumbnail.regular.small}')`;
+        anosResultados[i].textContent = divsContem[i].year;
+        categoriasResultados[i].textContent = divsContem[i].category;
+        classificacoesResultados[i].textContent = divsContem[i].rating;
+        nomesResultados[i].textContent = divsContem[i].title;
+        if (divsContem[i].category === 'TV Series') {
+          iconesCategoriaResultados[i].src = `./assets/icon-category-tv.svg`;
+        } else {
+          iconesCategoriaResultados[i].src = `./assets/icon-category-movie.svg`;
         }
       }
     }
