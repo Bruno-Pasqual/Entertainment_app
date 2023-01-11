@@ -44,6 +44,62 @@ function comecaCodigo() {
 
   //! Fim da seleção dos elementos -----------------
 
+  //! Começando a lógica do código ---------------------------------------------
+
+  // console.log(dados);
+
+  //todo --  cria dois array e organiza os objetos separando-os entre os que tem a propriedade isTrending como true ou false ----
+
+  let trending = [];
+  let recommended = [];
+
+  dados.map((item) => {
+    if (item.isTrending) {
+      trending.push(item);
+    } else {
+      recommended.push(item);
+    }
+  });
+
+  //todo -- --------------------- Altera as informações dos container de trending (deixar automático)
+
+  for (let i = 0; i < trending.length; i++) {
+    //todo --- for que irá utilizar os objetos dentro do array "trending" para modificar as suas divs.
+
+    if (trending[i].category === 'Movie') {
+      containerInfoType[i].innerHTML = `
+      <img src="./assets/icon-category-movie.svg" alt="icone filme" />
+      <p class="type_content_text">Movie</p>
+      `;
+    } else {
+      containerInfoType[i].innerHTML = `
+      <img src="./assets/icon-category-tv.svg" alt="icone tipo de conteúdo" />
+  <p class="type_content_text">TV</p></p>
+      `;
+    }
+
+    cardsTrending[
+      i
+    ].style.backgroundImage = `url('${trending[i].thumbnail.trending.small}')`;
+    yearsOfTrending[i].textContent = `${trending[i].year}`;
+    tituloConteudoTrends[i].textContent = `${trending[i].title}`;
+  }
+
+  for (let i = 0; i < cardsRecomendados.length; i++) {
+    imagensCardsRecomendados[
+      i
+    ].style.backgroundImage = `url('${recommended[i].thumbnail.regular.small}')`;
+    anosRecomendados[i].textContent = `${recommended[i].year}`;
+    if (recommended[i].category === 'Movie') {
+      iconesRecomendados[i].src = `./assets/icon-category-movie.svg`;
+      categoryTags[i].textContent = 'Movie';
+    } else {
+      iconesRecomendados[i].src = `./assets/icon-category-tv.svg`;
+      categoryTags[i].textContent = 'TV';
+    }
+    titulosRecomendados[i].textContent = `${recommended[i].title}`;
+  }
+
   pesquisaInput.addEventListener('input', () => {
     //todo -- Aqui será feita a verificação se alguma coisa foi digitada no campo de pesquisa, caso tenha sido,  os container 'trending' e 'recomendado' serão escondidos, e o container "resultado_pesquisa" será revelado. Dentro desse, serão criadas divs, na quantidade correspondente ao número de objetos que atendem a busca, e estas, por fim, uilizarão as informações dos objetos.
 
@@ -61,6 +117,8 @@ function comecaCodigo() {
       containerResultado.innerHTML = '';
 
       for (let i = 0; i < dados.length; i++) {
+        //todo -- For que irá criar divs "result_cards" genéricas na quantidade correta, para serem alteradas posteriormente.
+
         if (
           dados[i].title
             .toLowerCase()
@@ -138,67 +196,6 @@ function comecaCodigo() {
 
     //! -------------------
   });
-
-  //! Começando a lógica do código ---------------------------------------------
-
-  // console.log(dados);
-
-  //todo --  cria dois array e organiza os objetos de acordo se tem a propriedade isTrending como true ou false ----
-
-  let trending = [];
-  let recommended = [];
-
-  dados.map((item) => {
-    if (item.isTrending) {
-      trending.push(item);
-    } else {
-      recommended.push(item);
-    }
-  });
-
-  /*   console.log(anosRecomendados);
-  console.log(iconesRecomendados);
-  console.log(titulosRecomendados);
-  console.log(recommended);
-  console.log(trending);
-  console.log(cardsTrending); */
-  //todo -- --------------------- Altera as informações dos container de trending (deixar automático)
-
-  for (let i = 0; i < trending.length; i++) {
-    if (trending[i].category === 'Movie') {
-      containerInfoType[i].innerHTML = `
-      <img src="./assets/icon-category-movie.svg" alt="icone filme" />
-      <p class="type_content_text">Movie</p>
-      `;
-    } else {
-      containerInfoType[i].innerHTML = `
-      <img src="./assets/icon-category-tv.svg" alt="icone tipo de conteúdo" />
-  <p class="type_content_text">TV</p></p>
-      `;
-    }
-
-    cardsTrending[
-      i
-    ].style.backgroundImage = `url('${trending[i].thumbnail.trending.small}')`;
-    yearsOfTrending[i].textContent = `${trending[i].year}`;
-    tituloConteudoTrends[i].textContent = `${trending[i].title}`;
-  }
-
-  console.log(dados);
-  for (let i = 0; i < cardsRecomendados.length; i++) {
-    imagensCardsRecomendados[
-      i
-    ].style.backgroundImage = `url('${recommended[i].thumbnail.regular.small}')`;
-    anosRecomendados[i].textContent = `${recommended[i].year}`;
-    if (recommended[i].category === 'Movie') {
-      iconesRecomendados[i].src = `./assets/icon-category-movie.svg`;
-      categoryTags[i].textContent = 'Movie';
-    } else {
-      iconesRecomendados[i].src = `./assets/icon-category-tv.svg`;
-      categoryTags[i].textContent = 'TV';
-    }
-    titulosRecomendados[i].textContent = `${recommended[i].title}`;
-  }
 }
 
 function realizaBusca() {}
