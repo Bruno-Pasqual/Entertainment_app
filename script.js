@@ -1,3 +1,4 @@
+'use strict';
 let dados = {};
 
 //! Carregando dados do arquivo JSON e o atribuido a variável dados -----------
@@ -6,6 +7,7 @@ fetch('./data.json')
   .then((response) => response.json())
   .then((json) => {
     dados = json;
+    console.log(window.location.pathname.endsWith('index.html'));
     comecaCodigo();
   });
 
@@ -16,8 +18,8 @@ function comecaCodigo() {
 
   // ----------------------- Seleção dos elementos card trending
 
-  const trendingContainer = document.getElementById('trending_container');
-  const cardsTrending = document.querySelectorAll('.trending_card');
+  let trendingContainer = document.getElementById('trending_container');
+  let cardsTrending = document.querySelectorAll('.trending_card');
   const yearsOfTrending = document.querySelectorAll('.year');
   const containerInfoType = document.querySelectorAll('.container_category');
   const tituloConteudoTrends = document.querySelectorAll('.nome_conteudo');
@@ -52,6 +54,8 @@ function comecaCodigo() {
 
   let trending = [];
   let recommended = [];
+  let movies = [];
+  let tvSeries = [];
 
   dados.map((item) => {
     if (item.isTrending) {
@@ -60,6 +64,15 @@ function comecaCodigo() {
       recommended.push(item);
     }
   });
+
+  dados.map((item) => {
+    if (item.category == 'Movie') {
+      movies.push(item);
+    } else {
+      tvSeries.push(item);
+    }
+  });
+  console.log(dados);
 
   //todo -- --------------------- Altera as informações dos container de trending (deixar automático)
 
@@ -124,7 +137,6 @@ function comecaCodigo() {
             .toLowerCase()
             .includes(`${pesquisaInput.value.toLowerCase()}`)
         ) {
-          console.log(dados[i].title, true);
           divsContem.push(dados[i]);
           containerResultado.innerHTML += `<div class="result_card">
           <div class="result_card_img"></div>
@@ -147,8 +159,6 @@ function comecaCodigo() {
             <p class="result_title">The Great Lands</p>
           </div>
         </div>`;
-        } else {
-          console.log('título não incluí');
         }
 
         //2º ----
