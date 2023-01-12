@@ -283,3 +283,22 @@ nav {
   height: 154px;
   width: 164px;
 }
+
+/* ! Container bookmark */
+
+.container_bookmark {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  background: rgb(16, 20, 30, 0.5);
+  position: absolute;
+  right: 9px;
+  top: 9px;
+}
+
+/* .container_bookmark:hover {
+  cursor: pointer;
+
+} */
