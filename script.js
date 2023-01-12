@@ -27,16 +27,9 @@ function comecaCodigo() {
   // -------------------- Seleção dos elementos cards recomendados
 
   const recommendedContainer = document.getElementById('container_recomendado');
-  const cardsRecomendados = document.querySelectorAll('.recommended_card');
-  const imagensCardsRecomendados = document.querySelectorAll(
-    '.recommended_card_img'
+  const containerRecommendedCards = document.getElementById(
+    'container_recommended_cards'
   );
-  const anosRecomendados = document.querySelectorAll('.recommended_year');
-  const iconesRecomendados = document.querySelectorAll(
-    '.recommmended_category_icon'
-  );
-  const categoryTags = document.querySelectorAll('.recommended_category_name');
-  const titulosRecomendados = document.querySelectorAll('.recommended_title');
 
   // ------------------------------------------ seleção dos elementos Input
   const pesquisaInput = document.getElementById('search_input');
@@ -124,7 +117,57 @@ function comecaCodigo() {
     tituloConteudoTrends[i].textContent = `${trending[i].title}`;
   }
 
+  //! Gerando os cards "recomendados" -----------------------------------------
+
+  for (let i = 0; i < recommended.length; i++) {
+    containerRecommendedCards.innerHTML += `<div class="recommended_card">
+    <div class="recommended_card_img"></div>
+    <div class="recommended_details_container">
+      <!-- Primeira linha -->
+      <div class="recommended_first_row">
+        <p class="recommended_year">2019</p>
+        <ul>
+          <il class="recommended_card_category_container">
+            <img
+              src="./assets/icon-category-movie.svg"
+              alt="movie category icon"
+              class="recommmended_category_icon"
+            />
+            <p class="recommended_category_name">Movie</p>
+          </il>
+          <il><p class="recommended_classification">E</p></il>
+        </ul>
+      </div>
+      <!-- Fim Primeira linha -->
+      <p class="recommended_title">The Great Lands</p>
+    </div>
+    <div class="container_bookmark">
+    <img
+      src="./assets/icon-bookmark-empty.svg"
+      alt=""
+      class="botao_bookmark"
+    />
+  </div>
+    </div> `;
+  }
+  //! Seleção dos elementos dos cards recomendados ----------------------------
+
+  const cardsRecomendados = document.querySelectorAll('.recommended_card');
+  const imagensCardsRecomendados = document.querySelectorAll(
+    '.recommended_card_img'
+  );
+  const anosRecomendados = document.querySelectorAll('.recommended_year');
+  const iconesRecomendados = document.querySelectorAll(
+    '.recommmended_category_icon'
+  );
+  const categoryTags = document.querySelectorAll('.recommended_category_name');
+  const titulosRecomendados = document.querySelectorAll('.recommended_title');
+
+  //! Estilização dos cards recomendados-------- ----------------------------
+
   for (let i = 0; i < cardsRecomendados.length; i++) {
+    //todo, Nesse for, será utilizado o array de objetos "recommended" para alterar as informações de cada div criada nas linhas acima.
+
     imagensCardsRecomendados[
       i
     ].style.backgroundImage = `url('${recommended[i].thumbnail.regular.small}')`;
@@ -138,6 +181,8 @@ function comecaCodigo() {
     }
     titulosRecomendados[i].textContent = `${recommended[i].title}`;
   }
+
+  //! Pesquisa  ------------------------------------------------------
 
   pesquisaInput.addEventListener('input', () => {
     //todo -- Aqui será feita a verificação se alguma coisa foi digitada no campo de pesquisa, caso tenha sido,  os container 'trending' e 'recomendado' serão escondidos, e o container "resultado_pesquisa" será revelado. Dentro desse, serão criadas divs, na quantidade correspondente ao número de objetos que atendem a busca, e estas, por fim, uilizarão as informações dos objetos.

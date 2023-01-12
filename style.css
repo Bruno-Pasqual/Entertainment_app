@@ -146,6 +146,7 @@ nav {
 .recommended_card {
   width: 164px;
   height: 154px;
+  position: relative;
 }
 
 /* ! Trending card container ---------------- */
