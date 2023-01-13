@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  background: #10141e;
+}
+
+#container {
+  min-height: 667px;
+  border: 1px solid lightgray;
+  width: 375px;
+}
+
+/*! nav ----------------------------------------------------- */
+
+nav {
+  width: 375px;
+  height: 49px;
+  background: #161d2f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+#logo_img,
+#nav_icons_container,
+#imagem_usuario {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+nav #nav_icons_container {
+  display: flex;
+  column-gap: 24px;
+}
+
+#nav_icons_container img {
+  width: 16px;
+}
+
+#logo_img {
+  width: 25px;
+  height: 17.5px;
+}
+
+#imagem_usuario {
+  width: 24px;
+  height: 21px;
+}
+
+/* ! Search bar -------------------------------------------------- */
+
+#container_pesquisa {
+  width: 257px;
+  height: 24px;
+  margin: 31px 0 24px 16px;
+  display: flex;
+}
+
+#search_input {
+  margin-left: 19px;
+  width: 250px;
+  font-size: 1rem;
+  font-weight: 300;
+  background: none;
+  border: none;
+  color: white;
+  opacity: 0.5;
+}
+
+#search_input:focus {
+  color: white;
+  opacity: 1;
+  border: none;
+  outline: none;
+}
+
+/* ! container em alta --------------------------------------------- */
+#container_em_alta {
+  border: 1px solid red;
+  margin-left: 16px;
+  min-width: 496px;
+  height: 181px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#container_cards_em_alta .card_em_alta {
+  width: 240px;
+  height: 140px;
+  border-radius: 8px;
+  position: relative;
+  background-image: url('./assets/thumbnails/112/regular/small.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.container_informacoes {
+  width: 240px;
+  height: 70px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.0001) 0%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  position: absolute;
+  bottom: 0;
+  border-radius: 0 0 8px 8px;
+  color: white;
+}
+
+.informacoes_details {
+  width: 132px;
+  height: 38px;
+  margin: 16px 16px;
+}
+
+.first_row {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+}
+
+.first_row p,
+ul {
+  font-size: 12px;
+  font-weight: 300;
+  color: white;
+  opacity: 0.75;
+}
+
+ul {
+  display: flex;
+  column-gap: 16px;
+  list-style-type: none;
+}
+
+ul li:first-child {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+}
+
+ul img {
+  width: 12px;
+  height: 12px;
+}
+
+/* ! Container recomendados ------------------------------------------- */
+#container_recomendado {
+  border: 1px solid lightblue;
+  width: 343px;
+  height: auto;
+  margin: 24px auto 0 auto;
+  min-height: 300px;
+}
+
+#container_recomendado.card_em_alta {
+}
