@@ -49,7 +49,6 @@ function comecaCodigo() {
   //todo --  cria dois array e organiza os objetos separando-os entre os que tem a propriedade isTrending como true ou false ----
 
   if (!JSON.parse(localStorage.getItem('arrayBookmarked'))) {
-    console.loh('Não tem nada');
     let bookmarked = [];
   }
   let trending = [];
