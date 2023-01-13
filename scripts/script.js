@@ -52,6 +52,7 @@ function comecaCodigo() {
   let recommended = [];
   let movies = [];
   let tvSeries = [];
+  let bookmarked = [];
 
   dados.map((item) => {
     if (item.isTrending) {
@@ -284,10 +285,46 @@ function comecaCodigo() {
 
   console.log('eai velhinho');
   let containersBookmark = document.querySelectorAll('.container_bookmark');
+  let bookmarkIcons = document.querySelectorAll('.botao_bookmark');
   console.log(containersBookmark);
-  containersBookmark.forEach((elemento) => {
+  containersBookmark.forEach((elemento, index) => {
     elemento.addEventListener('click', (event) => {
-      console.log(event.target.parentElement);
+      /*      console.log(event.target.parentElement.childNodes); */
+      let classeDoParent = containersBookmark[index].parentElement.className;
+      console.log(classeDoParent);
+      if (classeDoParent === '') {
+      }
+
+      let temp =
+        containersBookmark[index].parentElement.childNodes[3].childNodes[7]
+          .textContent;
+
+      if (
+        bookmarked.includes(
+          containersBookmark[index].parentElement.childNodes[3].childNodes[7]
+            .textContent
+        )
+        //! Inclui ----
+      ) {
+        console.log('contem');
+        bookmarkIcons[index].src = `/assets/icon-bookmark-empty.svg`;
+        bookmarked.filter((value, index) => {
+          if (value === temp) {
+            bookmarked.splice(index, 1);
+            console.log(bookmarked);
+            return true;
+          }
+          return false;
+        });
+      }
+      //! Não Inclui ----
+      else {
+        bookmarkIcons[index].src = `/assets/icon-bookmark-full.svg`;
+        bookmarked.push(
+          containersBookmark[index].parentElement.childNodes[3].childNodes[7]
+            .textContent
+        );
+      }
     });
   });
 }
