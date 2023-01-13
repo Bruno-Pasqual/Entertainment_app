@@ -15,11 +15,115 @@
   </head>
   <body>
     <!-- ! Container -----  -->
-    <div class="container">
-      <nav></nav>
-      <div class="container_pesquisa"></div>
-      <div class="container_em_alta"></div>
-      <div class="container_recomendado"></div>
+    <div id="container">
+      <nav>
+        <!-- Logo -->
+        <a href="index.html"
+          ><img src="./assets/logo.svg" alt="icone do logo" id="logo_img"
+        /></a>
+        <div id="nav_icons_container">
+          <!-- Index -->
+          <a href="index.html"
+            ><img
+              src="./assets/icon-nav-home.svg"
+              alt="home page icon"
+              class="nav_icon"
+          /></a>
+          <!-- Movie -->
+          <a href="#"
+            ><img
+              src="./assets/icon-nav-movies.svg"
+              alt="movies icon"
+              class="nav_icon"
+          /></a>
+          <!-- TV -->
+          <a href="#"
+            ><img
+              src="./assets/icon-nav-tv-series.svg"
+              alt="tv series icon"
+              class="nav_icon"
+          /></a>
+          <!-- bookmark -->
+          <a href="#"
+            ><img
+              src="./assets/icon-nav-bookmark.svg"
+              alt="bookmarked icon"
+              class="nav_icon"
+          /></a>
+        </div>
+        <!-- Usuário -->
+        <a href="#"
+          ><img
+            id="imagem_usuario"
+            src="./assets/image-avatar.png"
+            alt="user image icon"
+        /></a>
+      </nav>
+      <div id="container_pesquisa">
+        <img src="./assets/icon-search.svg" alt="" class="search_icon" />
+        <input
+          type="text"
+          placeholder="Search for movies or TV series"
+          name=""
+          id="search_input"
+        />
+      </div>
+      <!-- container "em alta"-->
+      <div id="container_em_alta">
+        <h3 class="container_title">Trending</h3>
+        <!-- Container cards em alta-->
+        <div id="container_cards_em_alta">
+          <!-- card genérico -->
+          <div class="card_em_alta">
+            <div class="container_informacoes">
+              <div class="informacoes_details">
+                <div class="first_row">
+                  <p class="card_year">2019</p>
+                  <ul>
+                    <li>
+                      <img
+                        src="./assets/icon-category-movie.svg"
+                        alt=""
+                        class="category_icon"
+                      />
+                      <p class="category_name">Movie</p>
+                    </li>
+                    <li><p class="classification">PG</p></li>
+                  </ul>
+                </div>
+                <p class="card_title">Beyond Earth</p>
+              </div>
+            </div>
+          </div>
+          <!-- card genérico -->
+        </div>
+        <!-- Container cards em alta-->
+      </div>
+
+      <!-- Container recomendado-->
+      <div id="container_recomendado">
+        <div class="card_uso_geral">
+          <div class="container_informacoes">
+            <div class="informacoes_details">
+              <div class="first_row">
+                <p class="card_year">2019</p>
+                <ul>
+                  <li>
+                    <img
+                      src="./assets/icon-category-movie.svg"
+                      alt=""
+                      class="category_icon"
+                    />
+                    <p class="category_name">Movie</p>
+                  </li>
+                  <li><p class="classification">PG</p></li>
+                </ul>
+              </div>
+              <p class="card_title">Beyond Earth</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 
