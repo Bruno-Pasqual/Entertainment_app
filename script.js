@@ -275,7 +275,18 @@ function comecaCodigo() {
       }
     }
 
+    //! Selecionando todos os containers bookmark -----------------------------
+
     //! -------------------
+  });
+
+  console.log('eai velhinho');
+  let containersBookmark = document.querySelectorAll('.container_bookmark');
+  console.log(containersBookmark);
+  containersBookmark.forEach((elemento) => {
+    elemento.addEventListener('click', (event) => {
+      console.log(event.target.parentElement);
+    });
   });
 }
 
