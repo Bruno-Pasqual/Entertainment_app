@@ -48,11 +48,16 @@ function comecaCodigo() {
 
   //todo --  cria dois array e organiza os objetos separando-os entre os que tem a propriedade isTrending como true ou false ----
 
+  if (!JSON.parse(localStorage.getItem('arrayBookmarked'))) {
+    console.loh('Não tem nada');
+    let bookmarked = [];
+  }
   let trending = [];
   let recommended = [];
   let movies = [];
   let tvSeries = [];
   let bookmarked = [];
+  console.log(JSON.parse(localStorage.getItem('arrayBookmarked')));
 
   dados.map((item) => {
     if (item.isTrending) {
@@ -278,52 +283,71 @@ function comecaCodigo() {
       }
     }
 
-    //! Selecionando todos os containers bookmark -----------------------------
-
-    //! -------------------
+    //! Lógica do bookmark ---------------------------------------------------
   });
 
-  console.log('eai velhinho');
   let containersBookmark = document.querySelectorAll('.container_bookmark');
   let bookmarkIcons = document.querySelectorAll('.botao_bookmark');
-  console.log(containersBookmark);
   containersBookmark.forEach((elemento, index) => {
     elemento.addEventListener('click', (event) => {
       /*      console.log(event.target.parentElement.childNodes); */
       let classeDoParent = containersBookmark[index].parentElement.className;
-      console.log(classeDoParent);
-      if (classeDoParent === '') {
-      }
 
-      let temp =
-        containersBookmark[index].parentElement.childNodes[3].childNodes[7]
-          .textContent;
+      //! If para verificar a seção do elemento clicado ------------------------
 
-      if (
-        bookmarked.includes(
+      //Caso seja a seção recomendado ------------
+      if (classeDoParent === 'recommended_card') {
+        //todo -- Condicional que irá verificar em qual seção do site o icone de bookmark foi clicado. Dessa forma é possível ajustar a busca pelo campo contendo o título do programa em questão (a depender da seção, o index para chegar até o elemento com o título muda, por isso o uso da condicional, do contrário estava ocorrendo erro.)
+
+        let temp =
           containersBookmark[index].parentElement.childNodes[3].childNodes[7]
-            .textContent
-        )
-        //! Inclui ----
-      ) {
-        console.log('contem');
-        bookmarkIcons[index].src = `/assets/icon-bookmark-empty.svg`;
-        bookmarked.filter((value, index) => {
-          if (value === temp) {
-            bookmarked.splice(index, 1);
-            console.log(bookmarked);
-            return true;
-          }
-          return false;
-        });
-      }
-      //! Não Inclui ----
-      else {
-        bookmarkIcons[index].src = `/assets/icon-bookmark-full.svg`;
-        bookmarked.push(
-          containersBookmark[index].parentElement.childNodes[3].childNodes[7]
-            .textContent
-        );
+            .textContent;
+
+        if (bookmarked.includes(temp)) {
+          //todo -- Condicional que faz a verificação se o título do programa relacionado ao elemento clicado (bookmark) já se encontra dentro da lista de programas bookmarked (favoritados), caso se encontre, o programa irá remover o programa e tirar a marcação de favoritado, caso contrário, o mesmo irá ser adicionado.
+
+          bookmarkIcons[index].src = `/assets/icon-bookmark-empty.svg`;
+          bookmarked.filter((value, index) => {
+            if (value === temp) {
+              bookmarked.splice(index, 1);
+              localStorage.setItem(
+                'arrayBookmarked',
+                JSON.stringify(bookmarked)
+              );
+              return true;
+            }
+            return false;
+          });
+        } else {
+          bookmarkIcons[index].src = `/assets/icon-bookmark-full.svg`;
+          bookmarked.push(temp);
+          localStorage.setItem('arrayBookmarked', JSON.stringify(bookmarked));
+        }
+        //Caso seja a seção Trending ------------
+      } else if (classeDoParent === 'trending_card') {
+        let temp =
+          containersBookmark[index].parentElement.childNodes[3].childNodes[3]
+            .textContent;
+        if (bookmarked.includes(temp)) {
+          //! Inclui -------------------------
+          bookmarkIcons[index].src = `/assets/icon-bookmark-empty.svg`;
+          bookmarked.filter((value, index) => {
+            if (value === temp) {
+              bookmarked.splice(index, 1);
+              localStorage.setItem(
+                'arrayBookmarked',
+                JSON.stringify(bookmarked)
+              );
+              return true;
+            }
+            return false;
+          });
+          //! Não inclui ---------------------
+        } else {
+          bookmarkIcons[index].src = `/assets/icon-bookmark-full.svg`;
+          bookmarked.push(temp);
+          localStorage.setItem('arrayBookmarked', JSON.stringify(bookmarked));
+        }
       }
     });
   });
