@@ -18,6 +18,7 @@ body {
   min-height: 667px;
   border: 1px solid lightgray;
   width: 375px;
+  overflow: hidden;
 }
 
 /*! nav ----------------------------------------------------- */
@@ -87,10 +88,12 @@ nav #nav_icons_container {
 }
 
 /* ! container em alta --------------------------------------------- */
+/* todo -- deixar o width do conteúdo ser ajustado automaticamente pelo javascript pela quantidade de cards nessa categoria.  */
+
 #container_em_alta {
   border: 1px solid red;
   margin-left: 16px;
-  min-width: 496px;
+  min-width: 1305px;
   height: 181px;
   display: flex;
   flex-direction: column;
@@ -101,6 +104,11 @@ nav #nav_icons_container {
   color: white;
   font-weight: 300;
   font-size: 20px;
+}
+
+#container_cards_em_alta {
+  display: flex;
+  column-gap: 16px;
 }
 
 #container_cards_em_alta .card_em_alta {
@@ -169,10 +177,23 @@ ul img {
   font-size: 15px;
   font-weight: 500;
 }
+/* Container bookmark */
+.bookmark_container {
+  width: 32px;
+  height: 32px;
+  background: rgb(16, 20, 30, 0.5);
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
 
 /* ! Container recomendados ------------------------------------------- */
 #container_recomendado {
-  border: 1px solid lightblue;
+  /* border: 1px solid lightblue; */
+  outline: 1px solid red;
   width: 343px;
   height: auto;
   margin: 24px auto 0 auto;
@@ -188,20 +209,20 @@ ul img {
 #container_cards_recomendados {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 15px;
+  justify-content: space-between;
+  row-gap: 16px;
 }
 
 .card_uso_geral {
-  width: 154px;
-  height: 164px;
-  border: 1px solid lightyellow;
+  width: 164px;
+  height: 154px;
+  position: relative;
 }
 
 .container_imagem {
-  width: 154px;
+  width: 164px;
   height: 110px;
   border-radius: 8px;
-  border: 1px solid lightblue;
   background-image: url('./assets/thumbnails/112/regular/small.jpg');
   background-position: center;
   background-size: cover;
