@@ -7,8 +7,10 @@ fetch('./data.json')
   .then((response) => response.json())
   .then((json) => {
     dados = json;
-    console.log(window.location.pathname.endsWith('index.html'));
     let paginaAtiva = JSON.parse(localStorage.getItem('paginaAtiva'));
-    console.log(paginaAtiva);
     comecaCodigo();
   });
+
+function comecaCodigo() {
+  console.log(dados);
+}

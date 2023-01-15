@@ -18,7 +18,6 @@ body {
   min-height: 667px;
   border: 1px solid lightgray;
   width: 375px;
-  overflow: hidden;
 }
 
 /*! nav ----------------------------------------------------- */
@@ -93,7 +92,6 @@ nav #nav_icons_container {
 #container_em_alta {
   border: 1px solid red;
   margin-left: 16px;
-  min-width: 1305px;
   height: 181px;
   display: flex;
   flex-direction: column;
@@ -107,9 +105,27 @@ nav #nav_icons_container {
 }
 
 #container_cards_em_alta {
-  display: flex;
+  /* todo -- Aqui foi definido o o overflow do elemento que contem os elementos filhos. */
+  display: grid;
+  grid-auto-flow: column;
   column-gap: 16px;
-  overflow-x: visible;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.snaps_inline {
+  scroll-snap-type: inline mandatory;
+  /* todo - foi criado uma classe especifica para o snap que irá ocorrer no elemento pai. */
+}
+
+.snaps_inline > * {
+  /* todo --- Aqui é definido em que ponto o snap deve correr o elemento, ou seja, se o scroll deixar um elemento na metade do fim do elemento pai, o snap irá o correr até o ponto aqui definido (nesse caso é o começo do elemento filho) */
+  scroll-snap-align: start;
+}
+
+#container_cards_em_alta::-webkit-scrollbar {
+  /* todo --- comando para esconder a barra de rolagem */
+  display: none;
 }
 
 #container_cards_em_alta .card_em_alta {
