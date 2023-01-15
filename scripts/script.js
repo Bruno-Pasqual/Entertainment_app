@@ -24,13 +24,21 @@ function comecaCodigo() {
   const searchInput = document.getElementById('search_input');
   const containerAlta = document.getElementById('container_em_alta');
   const containerRecomendado = document.getElementById('container_recomendado');
+  const containerCardsResultado = document.getElementById(
+    'container_cards_resultado'
+  );
+  const containerResultadoPesquisa = document.getElementById(
+    'container_resultado_pesquisa'
+  );
 
   //! Declarando funções -----------------------------------------------
   function checaPesquisa() {
+    containerCardsResultado.innerHTML = '';
     console.log(searchInput.value);
     if (searchInput.value.length != 0) {
       containerAlta.style.display = 'none';
       containerRecomendado.style.display = 'none';
+      containerResultadoPesquisa.style.display = 'flex';
       let arrayResultado = dados.filter((elemento, index) => {
         if (elemento.title.includes(searchInput.value)) {
           return true;
@@ -38,11 +46,46 @@ function comecaCodigo() {
           return false;
         }
       });
+      arrayResultado.forEach((elemento, index) => {
+        containerCardsResultado.innerHTML += `<div class="card_resultado">
+        <div class="bookmark_container">
+          <img src="./assets/icon-bookmark-empty.svg" alt="" class="bookmark_icon" />
+        </div>
+        <div class="container_imagem_resultado"></div>
+        <div class="container_informacoes_recomendado">
+          <div class="first_row">
+            <p class="card_year">${elemento.year}</p>
+            <ul>
+              <li>
+                <img
+                  src="./assets/icon-category-${
+                    elemento.category === 'Movie' ? 'movie' : 'tv'
+                  }.svg"
+                  alt=""
+                  class="category_icon"
+                />
+                <p class="category_name">${elemento.category}</p>
+              </li>
+              <li><p class="classification">${elemento.rating}</p></li>
+            </ul>
+          </div>
+          <p class="card_title">${elemento.title}</p>
+        </div>
+      </div>`;
+      });
+
+      //todo Selecionando as divs resultado e alterando a imagem das mesmas.
+      let containerImagensResultado = document.querySelectorAll(
+        '.container_imagem_resultado'
+      );
+      containerImagensResultado.forEach((container, index) => {
+        container.style.backgroundImage = `url("${arrayResultado[index].thumbnail.regular.small}")`;
+      });
     } else {
       containerAlta.style.display = 'flex';
       containerRecomendado.style.display = 'flex';
+      containerResultadoPesquisa.style.display = 'none';
       console.log('aqui');
-      comecaCodigo();
     }
   }
   //! Declarando funções -----------------------------------------------

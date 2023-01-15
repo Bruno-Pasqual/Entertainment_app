@@ -266,6 +266,15 @@ ul img {
 }
 
 /* !Containers resultado -------------------------------------------------- */
+#container_resultado_pesquisa {
+  display: none;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.container_title {
+}
+
 #container_cards_resultado {
   width: 373px;
   /* min-height: 611px; */
@@ -275,5 +284,9 @@ ul img {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0 16px;
-  display: none;
+  row-gap: 16px;
+}
+
+.container_imagem_resultado {
+  margin-bottom: 8px;
 }
