@@ -18,6 +18,7 @@ body {
   min-height: 667px;
   border: 1px solid lightgray;
   width: 375px;
+  margin-bottom: 2rem;
 }
 
 /*! nav ----------------------------------------------------- */
@@ -95,6 +96,7 @@ nav #nav_icons_container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  display: none;
 }
 
 .container_title {
@@ -215,6 +217,7 @@ ul img {
   min-height: 300px;
   display: flex;
   flex-direction: column;
+  display: none;
 }
 
 #container_recomendado .container_title {
@@ -258,4 +261,16 @@ ul img {
 
 #container_recomendado .container_informacoes {
   width: 112px;
+}
+
+/* !Containers resultado -------------------------------------------------- */
+#container_cards_resultado {
+  width: 373px;
+  /* min-height: 611px; */
+  background: #10141e;
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 16px;
 }

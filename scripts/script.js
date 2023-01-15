@@ -21,6 +21,7 @@ function comecaCodigo() {
   const containerCardsRecomendados = document.getElementById(
     'container_cards_recomendados'
   );
+  const searchInput = document.getElementById('search_input');
 
   //! Variáveis ------------------------------------------------------------
   let arrayCardsEmAlta = [];
@@ -135,3 +136,5 @@ function criaCardsGenericos(pai, array) {
     card.style.backgroundImage = `url("${array[index].thumbnail.regular.small}")`;
   });
 }
+
+function checaPesquisa() {}
