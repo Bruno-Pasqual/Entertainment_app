@@ -96,7 +96,6 @@ nav #nav_icons_container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  display: none;
 }
 
 .container_title {
@@ -217,7 +216,6 @@ ul img {
   min-height: 300px;
   display: flex;
   flex-direction: column;
-  display: none;
 }
 
 #container_recomendado .container_title {
@@ -231,13 +229,15 @@ ul img {
   row-gap: 16px;
 }
 
-.card_uso_geral {
+.card_uso_geral,
+.card_resultado {
   width: 164px;
   height: 154px;
   position: relative;
 }
 
-.container_imagem {
+.container_imagem,
+.container_imagem_resultado {
   width: 164px;
   height: 110px;
   border-radius: 8px;
@@ -246,13 +246,15 @@ ul img {
   background-size: cover;
 }
 
-.container_informacoes_recomendado {
+.container_informacoes_recomendadom,
+.container_informacoes_resultado {
   width: 160px;
   height: 38px;
   margin-top: 8px;
 }
 
-.card_uso_geral .card_title {
+.card_uso_geral .card_title,
+.card_resultado .card_title {
   font-size: 14px;
   font-weight: 500;
   color: white;
@@ -273,4 +275,5 @@ ul img {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0 16px;
+  display: none;
 }

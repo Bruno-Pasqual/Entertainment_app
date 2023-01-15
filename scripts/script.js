@@ -6,7 +6,7 @@ let dados = {};
 fetch('./data.json')
   .then((response) => response.json())
   .then((json) => {
-    console.log(localStorage.getItem('chave'));
+    console.log(localStorage.getItem('jaso'));
     localStorage.setItem('dados', JSON.stringify(dados));
     dados = json;
     console.log(dados);
@@ -22,6 +22,30 @@ function comecaCodigo() {
     'container_cards_recomendados'
   );
   const searchInput = document.getElementById('search_input');
+  const containerAlta = document.getElementById('container_em_alta');
+  const containerRecomendado = document.getElementById('container_recomendado');
+
+  //! Declarando funções -----------------------------------------------
+  function checaPesquisa() {
+    console.log(searchInput.value);
+    if (searchInput.value.length != 0) {
+      containerAlta.style.display = 'none';
+      containerRecomendado.style.display = 'none';
+      let arrayResultado = dados.filter((elemento, index) => {
+        if (elemento.title.includes(searchInput.value)) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    } else {
+      containerAlta.style.display = 'flex';
+      containerRecomendado.style.display = 'flex';
+      console.log('aqui');
+      comecaCodigo();
+    }
+  }
+  //! Declarando funções -----------------------------------------------
 
   //! Variáveis ------------------------------------------------------------
   let arrayCardsEmAlta = [];
@@ -38,6 +62,7 @@ function comecaCodigo() {
   // Argumentos (elemento pai, array)
   criaCardsEmAlta(containerCardsEmAlta, arrayCardsEmAlta);
   criaCardsGenericos(containerCardsRecomendados, arrayCardsRecomendados);
+  searchInput.addEventListener('input', checaPesquisa);
 
   //! Fim da função começa código --
 }
@@ -89,13 +114,15 @@ function criaCardsEmAlta(pai, array) {
   });
 
   //todo -- Loop que irá selecionar todos os cards criados dentro do container "Trending" e irá utilizar os objetos dentro do array "arrayCardsEmAlta" para trocar as imagens de fundo.
-  const cardsEmAlta = document.querySelectorAll('.card_em_alta');
+  let cardsEmAlta = document.querySelectorAll('.card_em_alta');
+  console.log(cardsEmAlta);
   cardsEmAlta.forEach((card, index) => {
     card.style.backgroundImage = `url("${array[index].thumbnail.trending.small}")`;
   });
 }
 
 function criaCardsGenericos(pai, array) {
+  console.log(array[0]);
   array.map((elemento, index) => {
     pai.innerHTML += `<div class="card_uso_geral">
     <div class="bookmark_container">
@@ -131,10 +158,7 @@ function criaCardsGenericos(pai, array) {
   //todo -- Loop que irá selecionar todas os cards de imagens e irá os alterar de acordo com os objetos dentro do array "arrayCardsRecomendados"
   const containersImagesCardGeral =
     document.querySelectorAll('.container_imagem');
-  console.log(containersImagesCardGeral);
   containersImagesCardGeral.forEach((card, index) => {
     card.style.backgroundImage = `url("${array[index].thumbnail.regular.small}")`;
   });
 }
-
-function checaPesquisa() {}
