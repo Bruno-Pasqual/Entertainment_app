@@ -90,7 +90,6 @@ nav #nav_icons_container {
 /* todo -- deixar o width do conteúdo ser ajustado automaticamente pelo javascript pela quantidade de cards nessa categoria.  */
 
 #container_em_alta {
-  border: 1px solid red;
   margin-left: 16px;
   height: 181px;
   display: flex;
@@ -210,8 +209,6 @@ ul img {
 
 /* ! Container recomendados ------------------------------------------- */
 #container_recomendado {
-  /* border: 1px solid lightblue; */
-  /* outline: 1px solid red; */
   width: 343px;
   height: auto;
   margin: 24px auto 0 auto;
