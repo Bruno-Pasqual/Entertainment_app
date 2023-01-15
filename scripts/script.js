@@ -80,6 +80,7 @@ function comecaCodigo() {
       );
       containerImagensResultado.forEach((container, index) => {
         container.style.backgroundImage = `url("${arrayResultado[index].thumbnail.regular.small}")`;
+        bookmark();
       });
     } else {
       containerAlta.style.display = 'flex';
@@ -105,6 +106,7 @@ function comecaCodigo() {
   // Argumentos (elemento pai, array)
   criaCardsEmAlta(containerCardsEmAlta, arrayCardsEmAlta);
   criaCardsGenericos(containerCardsRecomendados, arrayCardsRecomendados);
+  bookmark();
   searchInput.addEventListener('input', checaPesquisa);
 
   //! Fim da função começa código --
@@ -203,5 +205,18 @@ function criaCardsGenericos(pai, array) {
     document.querySelectorAll('.container_imagem');
   containersImagesCardGeral.forEach((card, index) => {
     card.style.backgroundImage = `url("${array[index].thumbnail.regular.small}")`;
+  });
+}
+
+function bookmark() {
+  let bookmarkContainers = document.querySelectorAll('.bookmark_container');
+  console.log(bookmarkContainers);
+  bookmarkContainers.forEach((container, index) => {
+    container.addEventListener('click', () => {
+      container.childNodes[1].src = './assets/icon-bookmark-full.svg';
+
+      //todo tentando acessar o title para que seja possível criar um array dos elementos que estão com o bookmark = true;
+      console.log(container.parentNode.childNodes[5].card_title);
+    });
   });
 }

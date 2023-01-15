@@ -162,7 +162,7 @@ nav #nav_icons_container {
 .first_row {
   display: flex;
   align-items: center;
-  column-gap: 16px;
+  column-gap: 8px;
 }
 
 .first_row p,
@@ -175,7 +175,7 @@ ul {
 
 ul {
   display: flex;
-  column-gap: 16px;
+  column-gap: 8px;
   list-style-type: none;
 }
 
@@ -216,6 +216,7 @@ ul img {
   min-height: 300px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 24px;
 }
 
 #container_recomendado .container_title {
@@ -244,6 +245,7 @@ ul img {
   background-image: url('./assets/thumbnails/112/regular/small.jpg');
   background-position: center;
   background-size: cover;
+  margin-bottom: 8px;
 }
 
 .container_informacoes_recomendadom,
@@ -269,7 +271,7 @@ ul img {
 #container_resultado_pesquisa {
   display: none;
   flex-direction: column;
-  margin-bottom: 2rem;
+  margin-bottom: 24px;
 }
 
 .container_title {
@@ -285,8 +287,4 @@ ul img {
   justify-content: space-between;
   padding: 0 16px;
   row-gap: 16px;
-}
-
-.container_imagem_resultado {
-  margin-bottom: 8px;
 }
