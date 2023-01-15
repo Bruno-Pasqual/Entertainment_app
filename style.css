@@ -109,6 +109,7 @@ nav #nav_icons_container {
 #container_cards_em_alta {
   display: flex;
   column-gap: 16px;
+  overflow-x: visible;
 }
 
 #container_cards_em_alta .card_em_alta {
