@@ -118,6 +118,7 @@ function criaCardsEmAlta(pai, array) {
   //todo -- Função que irá receber 2 parâmetros, o elemento pai e o array que será usado para criar os elementos e também as informações que irão alterar as informações dos mesmos.
 
   // let cards = ['card_uso_geral', 'card_em_alta'];
+  carregaArray();
 
   array.map((elemento, index) => {
     //Criando os cards de acordo com a quantidade e com as informações dos objetos dentro do array.
@@ -127,7 +128,9 @@ function criaCardsEmAlta(pai, array) {
     }">
       <div class="bookmark_container">
         <img
-          src="./assets/icon-bookmark-empty.svg"
+          src="./assets/icon-bookmark-${
+            arrayBookmarked.includes(elemento.title) ? 'full' : 'empty'
+          }.svg"
           alt=""
           class="bookmark_icon"
         />
@@ -166,11 +169,14 @@ function criaCardsEmAlta(pai, array) {
 }
 
 function criaCardsGenericos(pai, array) {
+  carregaArray();
   array.map((elemento, index) => {
     pai.innerHTML += `<div class="card_uso_geral">
     <div class="bookmark_container">
       <img
-        src="./assets/icon-bookmark-empty.svg"
+        src="./assets/icon-bookmark-${
+          arrayBookmarked.includes(elemento.title) ? 'full' : 'empty'
+        }.svg"
         alt=""
         class="bookmark_icon"
       />
@@ -216,14 +222,51 @@ function bookmark() {
       //todo tentando acessar o title para que seja possível criar um array dos elementos que estão com o bookmark = true;
 
       if (container.parentElement.classList.contains('card_em_alta')) {
-        arrayBookmarked.push(
-          container.parentNode.childNodes[3].childNodes[1].childNodes[3]
-            .textContent
-        );
+        if (
+          arrayBookmarked.includes(
+            container.parentNode.childNodes[3].childNodes[1].childNodes[3]
+              .textContent
+          )
+        ) {
+          console.log('o array inclui');
+          arrayBookmarked = arrayBookmarked.filter(
+            (e) =>
+              e !==
+              container.parentNode.childNodes[3].childNodes[1].childNodes[3]
+                .textContent
+          );
+          console.log(arrayBookmarked);
+          container.childNodes[1].src = './assets/icon-bookmark-empty.svg';
+        } else {
+          console.log('o array não inclui');
+          arrayBookmarked.push(
+            container.parentNode.childNodes[3].childNodes[1].childNodes[3]
+              .textContent
+          );
+          console.log(arrayBookmarked);
+        }
       } else {
-        arrayBookmarked.push(
-          container.parentElement.childNodes[5].childNodes[3].textContent
-        );
+        if (
+          arrayBookmarked.includes(
+            container.parentElement.childNodes[5].childNodes[3].textContent
+          )
+        ) {
+          console.log('o array inclui');
+          arrayBookmarked = arrayBookmarked.filter(
+            (e) =>
+              e !==
+              container.parentElement.childNodes[5].childNodes[3].textContent
+          );
+
+          console.log(arrayBookmarked);
+          container.childNodes[1].src = './assets/icon-bookmark-empty.svg';
+        } else {
+          console.log('o array não inclui');
+          arrayBookmarked.push(
+            container.parentElement.childNodes[5].childNodes[3].textContent
+          );
+          console.log(arrayBookmarked);
+        }
       }
 
       salvaArray();
