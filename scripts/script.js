@@ -118,11 +118,11 @@ function comecaCodigo() {
 function criaCardsEmAlta(pai, array) {
   //todo -- Função que irá receber 2 parâmetros, o elemento pai e o array que será usado para criar os elementos e também as informações que irão alterar as informações dos mesmos.
   console.log(arrayBookmarked);
-  console.log(arrayBookmarked.length);
+  console.log(arrayBookmarked.length, 'eai');
   let variavelDeterminadora = 'empty';
-  function checaArray(elemento) {
+  function checaArray(card) {
     if (arrayBookmarked.length > 1) {
-      if (arrayBookmarked.includes(elemento.title)) {
+      if (arrayBookmarked.includes(card.title)) {
         variavelDeterminadora = 'full';
       } else {
         variavelDeterminadora = 'empty';
@@ -135,6 +135,8 @@ function criaCardsEmAlta(pai, array) {
   console.log(arrayBookmarked);
 
   array.map((elemento, index) => {
+    console.log('eai');
+    console.log(arrayBookmarked);
     checaArray(elemento);
     //Criando os cards de acordo com a quantidade e com as informações dos objetos dentro do array.
 
@@ -304,6 +306,6 @@ function salvaArray() {
 }
 
 function carregaArray() {
-  // if (sessionStorage )
-  arrayBookmarked = JSON.parse(sessionStorage.getItem('arrayBookmarked'));
+  if (sessionStorage.getItem('arrayBookmarked'))
+    arrayBookmarked = JSON.parse(sessionStorage.getItem('arrayBookmarked'));
 }
