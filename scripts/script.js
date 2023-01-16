@@ -10,7 +10,6 @@ let arrayBookmarked = [
 fetch('./data.json')
   .then((response) => response.json())
   .then((json) => {
-    localStorage.clear();
     dados = json;
     sessionStorage.setItem('dados', JSON.stringify(dados));
 
@@ -118,11 +117,25 @@ function comecaCodigo() {
 //! Funções para criação dos cards "EmAlta" e "Genericos" ----------------------
 function criaCardsEmAlta(pai, array) {
   //todo -- Função que irá receber 2 parâmetros, o elemento pai e o array que será usado para criar os elementos e também as informações que irão alterar as informações dos mesmos.
+  console.log(arrayBookmarked);
+  console.log(arrayBookmarked.length);
+  let variavelDeterminadora = 'empty';
+  function checaArray(elemento) {
+    if (arrayBookmarked.length > 1) {
+      if (arrayBookmarked.includes(elemento.title)) {
+        variavelDeterminadora = 'full';
+      } else {
+        variavelDeterminadora = 'empty';
+      }
+    }
+  }
 
   // let cards = ['card_uso_geral', 'card_em_alta'];
   carregaArray();
+  console.log(arrayBookmarked);
 
   array.map((elemento, index) => {
+    checaArray(elemento);
     //Criando os cards de acordo com a quantidade e com as informações dos objetos dentro do array.
 
     /* arrayBookmarked.includes(elemento.title) ? 'full' : 'empty'
@@ -132,7 +145,7 @@ function criaCardsEmAlta(pai, array) {
     }">
       <div class="bookmark_container">
         <img
-          src="./assets/icon-bookmark-empty.svg"
+          src="./assets/icon-bookmark-${variavelDeterminadora}.svg"
           alt=""
           class="bookmark_icon"
         />
@@ -172,11 +185,22 @@ function criaCardsEmAlta(pai, array) {
 
 function criaCardsGenericos(pai, array) {
   carregaArray();
+  let variavelDeterminadora = 'empty';
+  function checaArray(elemento) {
+    if (arrayBookmarked.length > 1) {
+      if (arrayBookmarked.includes(elemento.title)) {
+        variavelDeterminadora = 'full';
+      } else {
+        variavelDeterminadora = 'empty';
+      }
+    }
+  }
   array.map((elemento, index) => {
+    checaArray(elemento);
     pai.innerHTML += `<div class="card_uso_geral">
     <div class="bookmark_container">
       <img
-        src="./assets/icon-bookmark-empty.svg"
+        src="./assets/icon-bookmark-${variavelDeterminadora}.svg"
         alt=""
         class="bookmark_icon"
       />
@@ -213,8 +237,6 @@ function criaCardsGenericos(pai, array) {
 }
 
 function bookmark() {
-  arrayBookmarked = [''];
-  console.log(arrayBookmarked);
   let bookmarkContainers = document.querySelectorAll('.bookmark_container');
   // console.log(bookmarkContainers);
   bookmarkContainers.forEach((container, index) => {
