@@ -1,6 +1,7 @@
 'use strict';
 let dados = {};
 let arrayBookmarked = [
+  '',
   //array que irá receber os nomes dos elementos que forem bookmarkeds
 ];
 
@@ -9,8 +10,9 @@ let arrayBookmarked = [
 fetch('./data.json')
   .then((response) => response.json())
   .then((json) => {
-    localStorage.setItem('dados', JSON.stringify(dados));
+    localStorage.clear();
     dados = json;
+    sessionStorage.setItem('dados', JSON.stringify(dados));
 
     comecaCodigo();
   });
@@ -123,14 +125,14 @@ function criaCardsEmAlta(pai, array) {
   array.map((elemento, index) => {
     //Criando os cards de acordo com a quantidade e com as informações dos objetos dentro do array.
 
+    /* arrayBookmarked.includes(elemento.title) ? 'full' : 'empty'
+    } */
     pai.innerHTML += ` <div class="${
       elemento.isTrending === true ? 'card_em_alta' : 'card_uso_geral'
     }">
       <div class="bookmark_container">
         <img
-          src="./assets/icon-bookmark-${
-            arrayBookmarked.includes(elemento.title) ? 'full' : 'empty'
-          }.svg"
+          src="./assets/icon-bookmark-empty.svg"
           alt=""
           class="bookmark_icon"
         />
@@ -174,9 +176,7 @@ function criaCardsGenericos(pai, array) {
     pai.innerHTML += `<div class="card_uso_geral">
     <div class="bookmark_container">
       <img
-        src="./assets/icon-bookmark-${
-          arrayBookmarked.includes(elemento.title) ? 'full' : 'empty'
-        }.svg"
+        src="./assets/icon-bookmark-empty.svg"
         alt=""
         class="bookmark_icon"
       />
@@ -213,6 +213,8 @@ function criaCardsGenericos(pai, array) {
 }
 
 function bookmark() {
+  arrayBookmarked = [''];
+  console.log(arrayBookmarked);
   let bookmarkContainers = document.querySelectorAll('.bookmark_container');
   // console.log(bookmarkContainers);
   bookmarkContainers.forEach((container, index) => {
@@ -276,9 +278,10 @@ function bookmark() {
 }
 
 function salvaArray() {
-  localStorage.setItem('arrayBookmarked', JSON.stringify(arrayBookmarked));
+  sessionStorage.setItem('arrayBookmarked', JSON.stringify(arrayBookmarked));
 }
 
 function carregaArray() {
-  arrayBookmarked = JSON.parse(localStorage.getItem('arrayBookmarked'));
+  // if (sessionStorage )
+  arrayBookmarked = JSON.parse(sessionStorage.getItem('arrayBookmarked'));
 }
