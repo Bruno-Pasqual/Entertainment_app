@@ -1,15 +1,17 @@
 'use strict';
 let dados = {};
+let arrayBookmarked = [
+  //array que irá receber os nomes dos elementos que forem bookmarkeds
+];
 
 //! Carregando dados do arquivo JSON e o atribuido a variável dados -----------
 
 fetch('./data.json')
   .then((response) => response.json())
   .then((json) => {
-    console.log(localStorage.getItem('jaso'));
     localStorage.setItem('dados', JSON.stringify(dados));
     dados = json;
-    console.log(dados);
+
     comecaCodigo();
   });
 
@@ -34,7 +36,7 @@ function comecaCodigo() {
   //! Declarando funções -----------------------------------------------
   function checaPesquisa() {
     containerCardsResultado.innerHTML = '';
-    console.log(searchInput.value);
+
     if (searchInput.value.length != 0) {
       containerAlta.style.display = 'none';
       containerRecomendado.style.display = 'none';
@@ -86,7 +88,6 @@ function comecaCodigo() {
       containerAlta.style.display = 'flex';
       containerRecomendado.style.display = 'flex';
       containerResultadoPesquisa.style.display = 'none';
-      console.log('aqui');
     }
   }
   //! Declarando funções -----------------------------------------------
@@ -117,7 +118,6 @@ function criaCardsEmAlta(pai, array) {
   //todo -- Função que irá receber 2 parâmetros, o elemento pai e o array que será usado para criar os elementos e também as informações que irão alterar as informações dos mesmos.
 
   // let cards = ['card_uso_geral', 'card_em_alta'];
-  console.log(pai.classList.contains('container_cards_em_alta'));
 
   array.map((elemento, index) => {
     //Criando os cards de acordo com a quantidade e com as informações dos objetos dentro do array.
@@ -160,14 +160,12 @@ function criaCardsEmAlta(pai, array) {
 
   //todo -- Loop que irá selecionar todos os cards criados dentro do container "Trending" e irá utilizar os objetos dentro do array "arrayCardsEmAlta" para trocar as imagens de fundo.
   let cardsEmAlta = document.querySelectorAll('.card_em_alta');
-  console.log(cardsEmAlta);
   cardsEmAlta.forEach((card, index) => {
     card.style.backgroundImage = `url("${array[index].thumbnail.trending.small}")`;
   });
 }
 
 function criaCardsGenericos(pai, array) {
-  console.log(array[0]);
   array.map((elemento, index) => {
     pai.innerHTML += `<div class="card_uso_geral">
     <div class="bookmark_container">
@@ -210,13 +208,34 @@ function criaCardsGenericos(pai, array) {
 
 function bookmark() {
   let bookmarkContainers = document.querySelectorAll('.bookmark_container');
-  console.log(bookmarkContainers);
+  // console.log(bookmarkContainers);
   bookmarkContainers.forEach((container, index) => {
     container.addEventListener('click', () => {
       container.childNodes[1].src = './assets/icon-bookmark-full.svg';
 
       //todo tentando acessar o title para que seja possível criar um array dos elementos que estão com o bookmark = true;
-      console.log(container.parentNode.childNodes[5].card_title);
+
+      if (container.parentElement.classList.contains('card_em_alta')) {
+        arrayBookmarked.push(
+          container.parentNode.childNodes[3].childNodes[1].childNodes[3]
+            .textContent
+        );
+      } else {
+        arrayBookmarked.push(
+          container.parentElement.childNodes[5].childNodes[3].textContent
+        );
+      }
+
+      salvaArray();
+      carregaArray();
     });
   });
+}
+
+function salvaArray() {
+  localStorage.setItem('arrayBookmarked', JSON.stringify(arrayBookmarked));
+}
+
+function carregaArray() {
+  arrayBookmarked = JSON.parse(localStorage.getItem('arrayBookmarked'));
 }
