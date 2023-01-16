@@ -85,6 +85,7 @@ function comecaCodigo() {
         container.style.backgroundImage = `url("${arrayResultado[index].thumbnail.regular.small}")`;
         bookmark();
       });
+      bookmark();
     } else {
       containerAlta.style.display = 'flex';
       containerRecomendado.style.display = 'flex';
@@ -117,8 +118,6 @@ function comecaCodigo() {
 //! Funções para criação dos cards "EmAlta" e "Genericos" ----------------------
 function criaCardsEmAlta(pai, array) {
   //todo -- Função que irá receber 2 parâmetros, o elemento pai e o array que será usado para criar os elementos e também as informações que irão alterar as informações dos mesmos.
-  console.log(arrayBookmarked);
-  console.log(arrayBookmarked.length, 'eai');
   let variavelDeterminadora = 'empty';
   function checaArray(card) {
     if (arrayBookmarked.length > 1) {
