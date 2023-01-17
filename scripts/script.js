@@ -52,7 +52,7 @@ function criaOsCards() {
   //! Selecionando os Containers Pai ---
 
   //!Criando os cards em Alta ---
-  arrayTrending.map((elemento, index) => {
+  arrayTrending.map((card, index) => {
     paiCardsEmAlta.innerHTML += `<div class="card_em_alta">
     <div class="bookmark_container">
       <img src="./assets/icon-bookmark-empty.svg" alt="" class="bookmark_icon" />
@@ -60,20 +60,22 @@ function criaOsCards() {
     <div class="container_informacoes">
       <div class="informacoes_details">
         <div class="first_row">
-          <p class="card_year">2019</p>
+          <p class="card_year">${card.year}</p>
           <ul>
             <li>
               <img
-                src="./assets/icon-category-movie.svg"
+                src="./assets/icon-category-${
+                  card.category === 'Movie' ? 'movie' : 'tv'
+                }.svg"
                 alt=""
                 class="category_icon"
               />
-              <p class="category_name">Movie</p>
+              <p class="category_name">${card.category}</p>
             </li>
-            <li><p class="classification">PG</p></li>
+            <li><p class="classification">${card.rating}</p></li>
           </ul>
         </div>
-        <p class="card_title">Beyond Earth</p>
+        <p class="card_title">${card.title}</p>
       </div>
     </div>
   </div>`;
@@ -101,16 +103,18 @@ function criaOsCards() {
         <ul>
           <li>
             <img
-              src="./assets/icon-category-movie.svg"
+              src="./assets/icon-category-${
+                card.category === 'Movie' ? 'movie' : 'tv'
+              }.svg"
               alt=""
               class="category_icon"
             />
-            <p class="category_name">Movie</p>
+            <p class="category_name">${card.category}</p>
           </li>
-          <li><p class="classification">PG</p></li>
+          <li><p class="classification">${card.rating}</p></li>
         </ul>
       </div>
-      <p class="card_title">Beyond Earth</p>
+      <p class="card_title">${card.title}</p>
     </div>
   </div>`;
   });
@@ -128,7 +132,6 @@ function criaOsCards() {
 function selecionaosBookmark() {
   //Selecionando os containers que estão na tela
   let containersBookmark = document.querySelectorAll('.bookmark_container');
-  // console.log(containersBookmark);
 
   //Fazendo o loop para adicionar event listener em todos eles
   containersBookmark.forEach((container, index) => {
@@ -144,9 +147,15 @@ function selecionaosBookmark() {
             .textContent
         );
         console.log(JSON.parse(sessionStorage.getItem('dados')));
+
+        //! Caso o bookmark clicado seja da classe recomendado
       } else if (container.parentElement.classList.contains('card_resultado')) {
         atualizaNuvem(
           container.parentElement.children[2].children[1].textContent
+        );
+        atualizaOsBookmarks(
+          container.parentElement.children[2].children[1].textContent,
+          container.parentElement
         );
       }
     });
@@ -168,3 +177,23 @@ function atualizaNuvem(nomeDoPrograma) {
   sessionStorage.setItem('dados', JSON.stringify(dados));
   // sessionStorage.setItem(JSON.stringify('dados', dados));
 }
+
+function atualizaOsBookmarks(strigTitulo, pai) {
+  let containersBookmark = document.querySelectorAll('.bookmark_container');
+  let bookMarkIcons = document.querySelectorAll('.bookmark_icon');
+  // console.log(bookMarkIcons);
+
+  if (pai.classList.contains('card_resultado')) {
+    bookMarkIcons.forEach((elemento, index) => {
+      console.log(elemento.parentElement.parentElement.children[2].children);
+      /*    if (
+        elemento.parentElement.parentElement.children[1].children[0].children[1]
+          .textContent === strigTitulo
+      ) {
+        elemento.src = `./assets/icon-bookmark-full.svg`;
+      } */
+    });
+  }
+}
+
+//! Estava tentando alcançar o título do bookmarkicons da função atualiza bookmarks
