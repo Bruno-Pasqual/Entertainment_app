@@ -43,7 +43,11 @@ function comecaCodigo() {
       containerRecomendado.style.display = 'none';
       containerResultadoPesquisa.style.display = 'flex';
       let arrayResultado = dados.filter((elemento, index) => {
-        if (elemento.title.includes(searchInput.value)) {
+        if (
+          elemento.title
+            .toLocaleLowerCase()
+            .includes(searchInput.value.toLocaleLowerCase())
+        ) {
           return true;
         } else {
           return false;
@@ -88,6 +92,7 @@ function comecaCodigo() {
           <p class="card_title">${elemento.title}</p>
         </div>
       </div>`;
+        //! ---- bookmark();
       });
 
       //todo Selecionando as divs resultado e alterando a imagem das mesmas.
@@ -98,7 +103,7 @@ function comecaCodigo() {
         container.style.backgroundImage = `url("${arrayResultado[index].thumbnail.regular.small}")`;
         bookmark();
       });
-      bookmark();
+      //! ---- bookmark();
     } else {
       criaCardsEmAlta(containerCardsEmAlta, arrayCardsEmAlta);
       criaCardsGenericos(containerCardsRecomendados, arrayCardsRecomendados);
@@ -106,7 +111,7 @@ function comecaCodigo() {
       containerRecomendado.style.display = 'flex';
       containerResultadoPesquisa.style.display = 'none';
     }
-    bookmark();
+    // bookmark();
   }
   //! Declarando funções -----------------------------------------------
 
