@@ -20,6 +20,8 @@ if (sessionStorage.getItem('dados')) {
     });
 }
 
+//! Carregando dados do arquivo JSON e o atribuido a variável dados -----------
+
 function comecaCodigo() {
   puxaDadosEAtualiza();
   criaOsCards();
@@ -75,14 +77,15 @@ function criaOsCards() {
   </div>`;
     //Selecionando os cards para alterar a imagem de fundo --------------------
   });
-  //Criando
+  //Selecionando os containers e alterando a imagem de fundo
   let containersImagesTrending = document.querySelectorAll('.card_em_alta');
-  arrayTrending.map((elemento, index) => {
+  arrayTrending.map((objeto, index) => {
     containersImagesTrending[
       index
-    ].style.backgroundImage = `url("${elemento.thumbnail.trending.small}")`;
+    ].style.backgroundImage = `url("${objeto.thumbnail.trending.small}")`;
   });
   //!Criando os cards em Alta ---
+
   //!Criando os cards Recomendados ---
   arrayRecomendados.map((elemento, index) => {
     paiCardsRecomendados.innerHTML += `<div class="card_resultado">
@@ -109,11 +112,13 @@ function criaOsCards() {
     </div>
   </div>`;
   });
+  let containerImagesRecomendadas =
+    document.querySelectorAll('.container_imagem');
+  arrayRecomendados.map((objeto, index) => {
+    containerImagesRecomendadas[
+      index
+    ].style.backgroundImage = `url("${objeto.thumbnail.regular.small}")`;
+  });
 
   //!Criando os cards Recomendados ---
 }
-
-/* containersImagesAlta[
-  index
-].style.backgroundImage = `url("${elemento.thumbnail.trending.small}")`;
- */
