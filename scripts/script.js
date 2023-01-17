@@ -49,10 +49,23 @@ function comecaCodigo() {
           return false;
         }
       });
+      //! Teste ---------------------------
+      let variavelDeterminadora = 'empty';
+      function checaArray(card) {
+        if (arrayBookmarked.length > 1) {
+          if (arrayBookmarked.includes(card.title)) {
+            variavelDeterminadora = 'full';
+          } else {
+            variavelDeterminadora = 'empty';
+          }
+        }
+      }
+      //! Teste ---------------------------
       arrayResultado.forEach((elemento, index) => {
+        checaArray(elemento);
         containerCardsResultado.innerHTML += `<div class="card_resultado">
         <div class="bookmark_container">
-          <img src="./assets/icon-bookmark-empty.svg" alt="" class="bookmark_icon" />
+          <img src="./assets/icon-bookmark-${variavelDeterminadora}.svg" alt="" class="bookmark_icon" />
         </div>
         <div class="container_imagem_resultado"></div>
         <div class="container_informacoes_recomendado">
@@ -87,10 +100,13 @@ function comecaCodigo() {
       });
       bookmark();
     } else {
+      criaCardsEmAlta(containerCardsEmAlta, arrayCardsEmAlta);
+      criaCardsGenericos(containerCardsRecomendados, arrayCardsRecomendados);
       containerAlta.style.display = 'flex';
       containerRecomendado.style.display = 'flex';
       containerResultadoPesquisa.style.display = 'none';
     }
+    bookmark();
   }
   //! Declarando funções -----------------------------------------------
 
@@ -117,6 +133,7 @@ function comecaCodigo() {
 
 //! Funções para criação dos cards "EmAlta" e "Genericos" ----------------------
 function criaCardsEmAlta(pai, array) {
+  pai.innerHTML = '';
   //todo -- Função que irá receber 2 parâmetros, o elemento pai e o array que será usado para criar os elementos e também as informações que irão alterar as informações dos mesmos.
   let variavelDeterminadora = 'empty';
   function checaArray(card) {
@@ -134,8 +151,6 @@ function criaCardsEmAlta(pai, array) {
   console.log(arrayBookmarked);
 
   array.map((elemento, index) => {
-    console.log('eai');
-    console.log(arrayBookmarked);
     checaArray(elemento);
     //Criando os cards de acordo com a quantidade e com as informações dos objetos dentro do array.
 
@@ -185,6 +200,7 @@ function criaCardsEmAlta(pai, array) {
 }
 
 function criaCardsGenericos(pai, array) {
+  pai.innerHTML = '';
   carregaArray();
   let variavelDeterminadora = 'empty';
   function checaArray(elemento) {
