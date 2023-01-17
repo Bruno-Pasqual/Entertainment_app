@@ -141,12 +141,18 @@ function selecionaosBookmark() {
       //! Caso o bookmark clicado seja da classe "Trending/emAlta" -->
 
       if (container.parentElement.classList.contains('card_em_alta')) {
-        console.log(JSON.parse(sessionStorage.getItem('dados')));
+        // console.log(JSON.parse(sessionStorage.getItem('dados')));
         atualizaNuvem(
           container.parentElement.children[1].children[0].children[1]
             .textContent
         );
-        console.log(JSON.parse(sessionStorage.getItem('dados')));
+        atualizaOsBookmarks(
+          container.parentElement.children[1].children[0].children[1]
+            .textContent,
+          container.parentElement,
+          container
+        );
+        // console.log(JSON.parse(sessionStorage.getItem('dados')));
 
         //! Caso o bookmark clicado seja da classe recomendado
       } else if (container.parentElement.classList.contains('card_resultado')) {
@@ -155,7 +161,8 @@ function selecionaosBookmark() {
         );
         atualizaOsBookmarks(
           container.parentElement.children[2].children[1].textContent,
-          container.parentElement
+          container.parentElement,
+          container
         );
       }
     });
@@ -178,21 +185,21 @@ function atualizaNuvem(nomeDoPrograma) {
   // sessionStorage.setItem(JSON.stringify('dados', dados));
 }
 
-function atualizaOsBookmarks(strigTitulo, pai) {
-  let containersBookmark = document.querySelectorAll('.bookmark_container');
-  let bookMarkIcons = document.querySelectorAll('.bookmark_icon');
-  // console.log(bookMarkIcons);
+function atualizaOsBookmarks(stringTitulo, pai, container) {
+  dados = JSON.parse(sessionStorage.getItem('dados'));
 
-  if (pai.classList.contains('card_resultado')) {
-    bookMarkIcons.forEach((elemento, index) => {
-      console.log(elemento.parentElement.parentElement.children[2].children);
-      /*    if (
-        elemento.parentElement.parentElement.children[1].children[0].children[1]
-          .textContent === strigTitulo
-      ) {
-        elemento.src = `./assets/icon-bookmark-full.svg`;
-      } */
-    });
+  //-- COmparando o título passado e atribuindo a variável temp o objeto correspondente.
+  let temp = dados.filter((elemento) => {
+    return elemento.title === stringTitulo ? true : false;
+  });
+  console.log(temp[0].isBookmarked);
+
+  //Utilizando o objeto na variável temp para fazer a atualização correspondente do bookmark
+
+  if (temp[0].isBookmarked) {
+    container.children[0].src = './assets/icon-bookmark-full.svg';
+  } else {
+    container.children[0].src = './assets/icon-bookmark-empty.svg';
   }
 }
 
