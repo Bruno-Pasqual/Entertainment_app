@@ -27,9 +27,12 @@ function comecaCodigo() {
   criaOsCards();
   atualizaTodosBookmarks();
   selecionaosBookmark();
+  pesquisaMostraEEscondeDivs();
 
   //----------------------
 }
+
+//! Funções utilizadas no programa  --------------------------------------------
 
 function atualizaTrendingERecomendados() {
   dados = JSON.parse(sessionStorage.getItem('dados'));
@@ -170,22 +173,6 @@ function selecionaosBookmark() {
   });
 }
 
-function atualizaNuvem(nomeDoPrograma) {
-  //todo Função que é chamada toda vez que o um container do bookMark é clicado, irá mudar o estado "isBookmarking" do objeto correspondente ao título do bookMark clicado.
-
-  dados = JSON.parse(sessionStorage.getItem('dados'));
-  dados.map((elemento, index) => {
-    if (elemento.title === nomeDoPrograma) {
-      //Faz a verificação do estado atual da propriedade isBookmarked do elemento e a muda.
-      elemento.isBookmarked === true
-        ? (elemento.isBookmarked = false)
-        : (elemento.isBookmarked = true);
-    }
-  });
-  sessionStorage.setItem('dados', JSON.stringify(dados));
-  // sessionStorage.setItem(JSON.stringify('dados', dados));
-}
-
 function atualizaOBookmarkClicado(stringTitulo, pai, container) {
   dados = JSON.parse(sessionStorage.getItem('dados'));
 
@@ -202,6 +189,22 @@ function atualizaOBookmarkClicado(stringTitulo, pai, container) {
   } else {
     container.children[0].src = './assets/icon-bookmark-empty.svg';
   }
+}
+
+function atualizaNuvem(nomeDoPrograma) {
+  //todo Função que é chamada toda vez que o um container do bookMark é clicado, irá mudar o estado "isBookmarking" do objeto correspondente ao título do bookMark clicado.
+
+  dados = JSON.parse(sessionStorage.getItem('dados'));
+  dados.map((elemento, index) => {
+    if (elemento.title === nomeDoPrograma) {
+      //Faz a verificação do estado atual da propriedade isBookmarked do elemento e a muda.
+      elemento.isBookmarked === true
+        ? (elemento.isBookmarked = false)
+        : (elemento.isBookmarked = true);
+    }
+  });
+  sessionStorage.setItem('dados', JSON.stringify(dados));
+  // sessionStorage.setItem(JSON.stringify('dados', dados));
 }
 
 function atualizaTodosBookmarks() {
@@ -223,3 +226,31 @@ function atualizaTodosBookmarks() {
     }
   });
 }
+
+function pesquisaMostraEEscondeDivs() {
+  const searchInput = document.getElementById('search_input');
+
+  //!Selecionando as divs que serão manipuladas --
+  let containerEmAlta = document.getElementById('container_em_alta');
+  let containerRecomendado = document.getElementById('container_recomendado');
+  let containerResultado = document.getElementById(
+    'container_resultado_pesquisa'
+  );
+  //!Selecionando as divs que serão manipuladas --
+
+  searchInput.addEventListener('input', () => {
+    //verificação se o valor dentro do input está vazio ou não, caso esteja vázio as divs iniciais serão mostradas, do contrário, as primeiras divs serão ocultadas e apenas a div de resultado irá ser mostrada.
+
+    if (searchInput.value === '') {
+      containerEmAlta.style.display = 'flex';
+      containerRecomendado.style.display = 'flex';
+      containerResultado.style.display = 'none';
+    } else {
+      containerEmAlta.style.display = 'none';
+      containerRecomendado.style.display = 'none';
+      containerResultado.style.display = 'flex';
+    }
+  });
+}
+
+function procuraCards() {}
