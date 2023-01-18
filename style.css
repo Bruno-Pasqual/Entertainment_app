@@ -104,6 +104,13 @@ nav #nav_icons_container {
   font-size: 20px;
 }
 
+h4 {
+  color: white;
+  font-weight: 300;
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
 #container_cards_em_alta {
   /* todo -- Aqui foi definido o o overflow do elemento que contem os elementos filhos. */
   display: grid;
@@ -293,4 +300,8 @@ ul img {
 #container_pai_tv {
   border: 1px solid red;
   margin: 24px 16px 0 16px;
+}
+
+.container_cards_recomendados {
+  margin-bottom: 1rem;
 }

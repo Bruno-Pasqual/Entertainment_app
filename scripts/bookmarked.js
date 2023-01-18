@@ -30,6 +30,9 @@ function criaOsCards() {
     '.container_cards_recomendados'
   );
 
+  let arraytodos = [...arrayTv, ...arrayFilmes];
+  console.log(arraytodos);
+
   //Criando os cards dos cards dos programas de tv bookmarked
 
   arrayTv.map((objeto) => {
@@ -82,5 +85,15 @@ function criaOsCards() {
       <p class="card_title">${objeto.title}</p>
     </div>
   </div>`;
+  });
+
+  let cardsResultados = document.querySelectorAll(
+    '.container_imagem_resultado'
+  );
+
+  arraytodos.map((objeto, index) => {
+    cardsResultados[
+      index
+    ].style.backgroundImage = `url("${objeto.thumbnail.regular.small}")`;
   });
 }
