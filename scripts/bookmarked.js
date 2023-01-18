@@ -5,6 +5,8 @@ let dados = [];
 comecaScript();
 
 function comecaScript() {
+  arrayFilmes = [];
+  arrayTv = [];
   atualizaArrayFilmesETv();
   criaOsCards();
   habilitaBookmarks();
@@ -29,15 +31,20 @@ function criaOsCards() {
   let containersPai = document.querySelectorAll(
     '.container_cards_recomendados'
   );
+  console.log(containersPai);
 
   let arraytodos = [...arrayTv, ...arrayFilmes];
+  containersPai[0].innerHTML = '';
+  containersPai[1].innerHTML = '';
 
   //Criando os cards dos cards dos programas de tv bookmarked
 
   arrayTv.map((objeto) => {
     containersPai[0].innerHTML += `<div class="card_resultado">
     <div class="bookmark_container">
-      <img src="./assets/icon-bookmark-full.svg" alt="" class="bookmark_icon" />
+      <img src="./assets/icon-bookmark-${
+        objeto.isBookmarked ? 'full' : empty
+      }.svg" alt="" class="bookmark_icon" />
     </div>
     <div class="container_imagem_resultado"></div>
     <div class="container_informacoes_recomendado">
@@ -98,6 +105,8 @@ function criaOsCards() {
   });
 }
 
+function atualizaTodosBookmarks() {}
+
 function habilitaBookmarks() {
   //! Selecionando os elementos ---------
   let bookmarkContainers = document.querySelectorAll('.bookmark_container');
@@ -115,14 +124,17 @@ function habilitaBookmarks() {
 
 function mudaEAtualizaNuvem(containerTitle) {
   dados = JSON.parse(sessionStorage.getItem('dados'));
-  console.log(dados, '1');
+  console.log(dados);
+  let temp;
   dados.map((objeto, index) => {
     if (objeto.title === containerTitle) {
-      dados[index].isBookmarked = false;
-      console.log(dados, '2');
+      temp = index;
     }
   });
-  console.log(dados, '3');
+
+  dados[temp].isBookmarked = false;
+  sessionStorage.setItem('dados', JSON.stringify(dados));
+  comecaScript();
 }
 
 //! Estou tentando utilizar o título do container para acha-lo na variável dados, alterar o seu estado e depois atualizar a "nuvem" ainda não deu certo. !!
