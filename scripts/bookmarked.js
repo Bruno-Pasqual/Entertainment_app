@@ -6,8 +6,8 @@ comecaScript();
 
 function comecaScript() {
   atualizaArrayFilmesETv();
-  console.log(arrayTv);
   criaOsCards();
+  habilitaBookmarks();
 }
 
 //! -------------------
@@ -31,14 +31,13 @@ function criaOsCards() {
   );
 
   let arraytodos = [...arrayTv, ...arrayFilmes];
-  console.log(arraytodos);
 
   //Criando os cards dos cards dos programas de tv bookmarked
 
   arrayTv.map((objeto) => {
     containersPai[0].innerHTML += `<div class="card_resultado">
     <div class="bookmark_container">
-      <img src="./assets/icon-bookmark-empty.svg" alt="" class="bookmark_icon" />
+      <img src="./assets/icon-bookmark-full.svg" alt="" class="bookmark_icon" />
     </div>
     <div class="container_imagem_resultado"></div>
     <div class="container_informacoes_recomendado">
@@ -64,7 +63,7 @@ function criaOsCards() {
   arrayFilmes.map((objeto) => {
     containersPai[1].innerHTML += `<div class="card_resultado">
     <div class="bookmark_container">
-      <img src="./assets/icon-bookmark-empty.svg" alt="" class="bookmark_icon" />
+      <img src="./assets/icon-bookmark-full.svg" alt="" class="bookmark_icon" />
     </div>
     <div class="container_imagem_resultado"></div>
     <div class="container_informacoes_recomendado">
@@ -91,9 +90,39 @@ function criaOsCards() {
     '.container_imagem_resultado'
   );
 
+  //Atualizando as imagens em todos os cards criados
   arraytodos.map((objeto, index) => {
     cardsResultados[
       index
     ].style.backgroundImage = `url("${objeto.thumbnail.regular.small}")`;
   });
 }
+
+function habilitaBookmarks() {
+  //! Selecionando os elementos ---------
+  let bookmarkContainers = document.querySelectorAll('.bookmark_container');
+  let bookmarkIcon = document.querySelectorAll('.bookmark_icon');
+  let containerTitles = document.querySelectorAll('.card_title');
+
+  //! Selecionando os elementos ---------
+
+  bookmarkContainers.forEach((container, index) => {
+    container.addEventListener('click', () => {
+      mudaEAtualizaNuvem(containerTitles[index].textContent);
+    });
+  });
+}
+
+function mudaEAtualizaNuvem(containerTitle) {
+  dados = JSON.parse(sessionStorage.getItem('dados'));
+  console.log(dados, '1');
+  dados.map((objeto, index) => {
+    if (objeto.title === containerTitle) {
+      dados[index].isBookmarked = false;
+      console.log(dados, '2');
+    }
+  });
+  console.log(dados, '3');
+}
+
+//! Estou tentando utilizar o título do container para acha-lo na variável dados, alterar o seu estado e depois atualizar a "nuvem" ainda não deu certo. !!

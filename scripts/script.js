@@ -28,6 +28,7 @@ function comecaCodigo() {
   atualizaTodosBookmarks();
   selecionaosBookmark();
   pesquisaMostraEEscondeDivs();
+  console.log(dados);
 
   //----------------------
 }
