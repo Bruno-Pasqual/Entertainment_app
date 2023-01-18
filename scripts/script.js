@@ -25,6 +25,7 @@ if (sessionStorage.getItem('dados')) {
 function comecaCodigo() {
   atualizaTrendingERecomendados();
   criaOsCards();
+  atualizaTodosBookmarks();
   selecionaosBookmark();
 
   //----------------------
@@ -146,7 +147,7 @@ function selecionaosBookmark() {
           container.parentElement.children[1].children[0].children[1]
             .textContent
         );
-        atualizaOsBookmarks(
+        atualizaOBookmarkClicado(
           container.parentElement.children[1].children[0].children[1]
             .textContent,
           container.parentElement,
@@ -159,7 +160,7 @@ function selecionaosBookmark() {
         atualizaNuvem(
           container.parentElement.children[2].children[1].textContent
         );
-        atualizaOsBookmarks(
+        atualizaOBookmarkClicado(
           container.parentElement.children[2].children[1].textContent,
           container.parentElement,
           container
@@ -185,7 +186,7 @@ function atualizaNuvem(nomeDoPrograma) {
   // sessionStorage.setItem(JSON.stringify('dados', dados));
 }
 
-function atualizaOsBookmarks(stringTitulo, pai, container) {
+function atualizaOBookmarkClicado(stringTitulo, pai, container) {
   dados = JSON.parse(sessionStorage.getItem('dados'));
 
   //-- COmparando o título passado e atribuindo a variável temp o objeto correspondente.
@@ -203,4 +204,22 @@ function atualizaOsBookmarks(stringTitulo, pai, container) {
   }
 }
 
-//! Estava tentando alcançar o título do bookmarkicons da função atualiza bookmarks
+function atualizaTodosBookmarks() {
+  let containersBookmark = document.querySelectorAll('.bookmark_container');
+  let cardsTitles = document.querySelectorAll('.card_title');
+  let bookmarkIcons = document.querySelectorAll('.bookmark_icon');
+
+  cardsTitles.forEach((title, index) => {
+    //Criando uma variável temporária para segurar o objeto que será usado para ver se o bookmark do card deve ser alterado ou não.
+    let temp = dados.filter((objeto) => {
+      return objeto.title === title.textContent ? true : false;
+    });
+
+    //Utilizando a variável temp para alterar os cards que tiverem sua propriedade isBookmarked = true
+    if (temp[0].isBookmarked) {
+      bookmarkIcons[index].src = '/assets/icon-bookmark-full.svg';
+    } else {
+      bookmarkIcons[index].src = '/assets/icon-bookmark-empty.svg';
+    }
+  });
+}
