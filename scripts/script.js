@@ -221,14 +221,15 @@ function atualizaTodosBookmarks() {
 
     //Utilizando a variável temp para alterar os cards que tiverem sua propriedade isBookmarked = true
     if (temp[0].isBookmarked) {
-      bookmarkIcons[index].src = '/assets/icon-bookmark-full.svg';
+      bookmarkIcons[index].src = './assets/icon-bookmark-full.svg';
     } else {
-      bookmarkIcons[index].src = '/assets/icon-bookmark-empty.svg';
+      bookmarkIcons[index].src = './assets/icon-bookmark-empty.svg';
     }
   });
 }
 
 function pesquisaMostraEEscondeDivs() {
+  /*  */
   const searchInput = document.getElementById('search_input');
 
   //!Selecionando as divs que serão manipuladas --
