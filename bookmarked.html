@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
@@ -51,6 +52,33 @@
             alt="user image icon"
         /></a>
       </nav>
+      <div id="container_pesquisa">
+        <img src="./assets/icon-search.svg" alt="" class="search_icon" />
+        <input
+          type="text"
+          placeholder="Search for movies or TV series"
+          name=""
+          id="search_input"
+        />
+      </div>
+      <div id="container_pai_filmes">
+        <h3 class="container_title">Bookmarked Movies</h3>
+        <!-- Primeiro Container  -->
+        <div
+          id="container_cards_recomendados"
+          class="container_cards_recomendados"
+        ></div>
+        <!-- Primeiro Container  -->
+      </div>
+      <div id="container_pai_tv">
+        <h3 class="container_title">Bookmarked TV-Series</h3>
+        <!-- Segundo Container  -->
+        <div
+          id="container_cards_recomendados"
+          class="container_cards_recomendados"
+        ></div>
+        <!-- Segundo Container  -->
+      </div>
     </div>
 
     <script src="./scripts/bookmarked.js"></script>
