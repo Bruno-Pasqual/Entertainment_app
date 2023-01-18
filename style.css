@@ -270,11 +270,10 @@ ul img {
 /* !Containers resultado -------------------------------------------------- */
 #container_resultado_pesquisa {
   display: none;
-  flex-direction: column;
   margin-bottom: 24px;
-}
-
-.container_title {
+  gap: 15px;
+  margin: 0 15px;
+  flex-wrap: wrap;
 }
 
 #container_cards_resultado {

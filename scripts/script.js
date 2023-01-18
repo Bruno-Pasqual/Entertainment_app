@@ -134,7 +134,7 @@ function criaOsCards() {
 }
 
 function selecionaosBookmark() {
-  //Selecionando os containers que estão na tela
+  //Selecionando todos os bookMarks
   let containersBookmark = document.querySelectorAll('.bookmark_container');
 
   //Fazendo o loop para adicionar event listener em todos eles
@@ -168,6 +168,7 @@ function selecionaosBookmark() {
           container.parentElement,
           container
         );
+      } else if (as) {
       }
     });
   });
@@ -250,7 +251,60 @@ function pesquisaMostraEEscondeDivs() {
       containerRecomendado.style.display = 'none';
       containerResultado.style.display = 'flex';
     }
+    //-----
+    checaDadosECriaCards(searchInput.value);
+    atualizaTodosBookmarks();
+    selecionaosBookmark();
   });
 }
 
-function procuraCards() {}
+function checaDadosECriaCards(stringPesquisada) {
+  let containerResultado = document.getElementById(
+    'container_resultado_pesquisa'
+  );
+  // Pegando os dados da nuvem --> fazendo um filter utilizando a propriedade "title" desses objetos para fazer um filter no array e colocando os dados correspondentes a pesquisa dentro da variável "temp"
+  let dados = JSON.parse(sessionStorage.getItem('dados'));
+  let temp = dados.filter((objeto) => {
+    return objeto.title.toLowerCase().includes(stringPesquisada.toLowerCase())
+      ? true
+      : false;
+  });
+
+  //Utilizando o array map contendo os objetos para criar 'cardsResultado'.
+  containerResultado.innerHTML = '';
+  temp.map((objeto) => {
+    containerResultado.innerHTML += `<div class="card_resultado">
+    <div class="bookmark_container">
+      <img src="./assets/icon-bookmark-empty.svg" alt="" class="bookmark_icon" />
+    </div>
+    <div class="container_imagem_resultado"></div>
+    <div class="container_informacoes_recomendado">
+      <div class="first_row">
+        <p class="card_year">${objeto.year}</p>
+        <ul>
+          <li>
+            <img
+              src="./assets/icon-category-${
+                objeto.category === 'Movie' ? 'movie' : 'tv'
+              }.svg"
+              alt=""
+              class="category_icon"
+            />
+            <p class="category_name">${objeto.category}</p>
+          </li>
+          <li><p class="classification">${objeto.rating}</p></li>
+        </ul>
+      </div>
+      <p class="card_title">${objeto.title}</p>
+    </div>
+  </div>`;
+  });
+
+  // Seleciona todos os containers de container_imagem_resultado para as atualizar
+  let containersImagensResultados = document.querySelectorAll(
+    '.container_imagem_resultado'
+  );
+  containersImagensResultados.forEach((container, index) => {
+    container.style.backgroundImage = `url("${temp[index].thumbnail.regular.small}")`;
+  });
+}
