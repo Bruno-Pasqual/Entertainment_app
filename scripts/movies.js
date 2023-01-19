@@ -8,6 +8,7 @@ function comecaScript() {
   console.log(dados);
   criaCards();
   atualizaBookmarks();
+  atualizaBookmarkClicado();
 }
 
 function criaCards() {
@@ -67,7 +68,40 @@ function atualizaBookmarks() {
 }
 
 function atualizaBookmarkClicado() {
+  //! Selecionando os elementos necessários ---------------------------------
+
   let bookmarkContainers = document.querySelectorAll('.bookmark_container');
+  let bookmarkIcons = document.querySelectorAll('.bookmark_icon');
+
+  //! Realizando a lógica ----------------
+
+  bookmarkContainers.forEach((container, index) => {
+    container.addEventListener('click', () => {
+      // console
+      if (movies[index].isBookmarked === true) {
+        bookmarkIcons[index].src = `/assets/icon-bookmark-empty.svg`;
+        atualizaDados(movies[index].title);
+      } else {
+        bookmarkIcons[index].src = `./assets/icon-bookmark-full.svg`;
+        atualizaDados(movies[index].title);
+      }
+    });
+  });
 }
 
 comecaScript();
+
+function atualizaDados(strTitulo) {
+  //todo Função que irá atualizar o array dados e o salvará no sessionStorage
+
+  dados.map((objeto, index) => {
+    if (objeto.title === strTitulo) {
+      if (dados[index].isBookmarked === true) {
+        dados[index].isBookmarked = false;
+      } else {
+        dados[index].isBookmarked = true;
+      }
+    }
+  });
+  sessionStorage.setItem('dados', JSON.stringify(dados));
+}
