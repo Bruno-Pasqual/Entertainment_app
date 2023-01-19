@@ -5,7 +5,7 @@ movies = [];
 
 function comecaScript() {
   dados = JSON.parse(sessionStorage.getItem('dados'));
-  console.log(dados);
+
   criaCards();
   atualizaBookmarks();
   atualizaBookmarkClicado();
@@ -77,7 +77,6 @@ function atualizaBookmarkClicado() {
 
   bookmarkContainers.forEach((container, index) => {
     container.addEventListener('click', () => {
-      // console
       if (movies[index].isBookmarked === true) {
         bookmarkIcons[index].src = `/assets/icon-bookmark-empty.svg`;
         atualizaDados(movies[index].title);

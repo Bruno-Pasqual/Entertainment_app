@@ -17,7 +17,6 @@ function comecaScript() {
 function atualizaArrayFilmesETv() {
   //Atribuindo o array de objetos a variável dados --
   let dados = JSON.parse(sessionStorage.getItem('dados'));
-  console.log(dados);
   //Utilizando o map para atualizar os 'arrayTV' e 'arrayFilmes'
   dados.map((objeto) => {
     if (objeto.isBookmarked) {
@@ -26,15 +25,12 @@ function atualizaArrayFilmesETv() {
         : arrayTv.push(objeto);
     }
   });
-  console.log(arrayFilmes);
-  console.log(arrayTv);
 }
 
 function criaOsCards() {
   let containersPai = document.querySelectorAll(
     '.container_cards_recomendados'
   );
-  console.log(containersPai);
 
   let arraytodos = [...arrayTv, ...arrayFilmes];
   containersPai[0].innerHTML = '';
@@ -127,7 +123,6 @@ function habilitaBookmarks() {
 
 function mudaEAtualizaNuvem(containerTitle) {
   dados = JSON.parse(sessionStorage.getItem('dados'));
-  console.log(dados);
   let temp;
   dados.map((objeto, index) => {
     if (objeto.title === containerTitle) {

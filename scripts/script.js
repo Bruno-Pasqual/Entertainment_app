@@ -15,7 +15,6 @@ if (sessionStorage.getItem('dados')) {
     .then((response) => response.json())
     .then((json) => {
       sessionStorage.setItem('dados', JSON.stringify(json));
-      console.log('vou passar no fetch');
       comecaCodigo();
     });
 }
@@ -28,7 +27,6 @@ function comecaCodigo() {
   atualizaTodosBookmarks();
   selecionaosBookmark();
   pesquisaMostraEEscondeDivs();
-  console.log(dados);
 
   //----------------------
 }
@@ -37,15 +35,11 @@ function comecaCodigo() {
 
 function atualizaTrendingERecomendados() {
   dados = JSON.parse(sessionStorage.getItem('dados'));
-  // console.log(dados);
   dados.map((elemento) => {
     elemento.isTrending
       ? arrayTrending.push(elemento)
       : arrayRecomendados.push(elemento);
   });
-
-  // console.log(arrayTrending);
-  // console.log(arrayRecomendados);
 }
 
 function criaOsCards() {
@@ -141,12 +135,9 @@ function selecionaosBookmark() {
   //Fazendo o loop para adicionar event listener em todos eles
   containersBookmark.forEach((container, index) => {
     container.addEventListener('click', () => {
-      console.log(`Container ${index} clicado`);
-
       //! Caso o bookmark clicado seja da classe "Trending/emAlta" -->
 
       if (container.parentElement.classList.contains('card_em_alta')) {
-        // console.log(JSON.parse(sessionStorage.getItem('dados')));
         atualizaNuvem(
           container.parentElement.children[1].children[0].children[1]
             .textContent
@@ -157,7 +148,6 @@ function selecionaosBookmark() {
           container.parentElement,
           container
         );
-        // console.log(JSON.parse(sessionStorage.getItem('dados')));
 
         //! Caso o bookmark clicado seja da classe recomendado
       } else if (container.parentElement.classList.contains('card_resultado')) {
@@ -182,7 +172,6 @@ function atualizaOBookmarkClicado(stringTitulo, pai, container) {
   let temp = dados.filter((elemento) => {
     return elemento.title === stringTitulo ? true : false;
   });
-  console.log(temp[0].isBookmarked);
 
   //Utilizando o objeto na variável temp para fazer a atualização correspondente do bookmark
 
