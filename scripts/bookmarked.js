@@ -17,6 +17,7 @@ function comecaScript() {
 function atualizaArrayFilmesETv() {
   //Atribuindo o array de objetos a variável dados --
   let dados = JSON.parse(sessionStorage.getItem('dados'));
+  console.log(dados);
   //Utilizando o map para atualizar os 'arrayTV' e 'arrayFilmes'
   dados.map((objeto) => {
     if (objeto.isBookmarked) {
@@ -25,6 +26,8 @@ function atualizaArrayFilmesETv() {
         : arrayTv.push(objeto);
     }
   });
+  console.log(arrayFilmes);
+  console.log(arrayTv);
 }
 
 function criaOsCards() {

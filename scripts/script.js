@@ -49,7 +49,7 @@ function atualizaTrendingERecomendados() {
 }
 
 function criaOsCards() {
-  //! Selecionando os Containers Pai ---
+  //! Selecionando os Containers  Pai ---
   const paiCardsEmAlta = document.getElementById('container_cards_em_alta');
   const paiCardsRecomendados = document.getElementById(
     'container_cards_recomendados'
