@@ -1,5 +1,5 @@
 dados = [];
-movies = [];
+tvseries = [];
 
 //!Declarando as funções ----------------------------------
 
@@ -14,12 +14,12 @@ function comecaScript() {
 function criaCards() {
   let containerPai = document.getElementById('container_cards_recomendados');
   // ---
-  movies = dados.filter((objeto) => {
-    return objeto.category === 'Movie';
+  tvseries = dados.filter((objeto) => {
+    return objeto.category !== 'Movie';
   });
 
-  //! Criando os cards e ja usando o array de objeto "movies" para alterar suas informações
-  movies.map((objeto) => {
+  //! Criando os cards e ja usando o array de objeto "tvseries" para alterar suas informações
+  tvseries.map((objeto) => {
     containerPai.innerHTML += `<div class="card_resultado">
     <div class="bookmark_container">
       <img src="./assets/icon-bookmark-empty.svg" alt="" class="bookmark_icon" />
@@ -49,7 +49,7 @@ function criaCards() {
 
   //Selecionando as divs que contêm as imagens dos cards e as alterando com a imagem correspondente.
   let cards = document.querySelectorAll('.container_imagem_resultado');
-  movies.map((objeto, index) => {
+  tvseries.map((objeto, index) => {
     cards[
       index
     ].style.backgroundImage = `url("${objeto.thumbnail.regular.small}")`;
@@ -58,7 +58,7 @@ function criaCards() {
 
 function atualizaBookmarks() {
   let bookmarkIcons = document.querySelectorAll('.bookmark_icon');
-  movies.map((objeto, index) => {
+  tvseries.map((objeto, index) => {
     if (objeto.isBookmarked === true) {
       bookmarkIcons[index].src = `./assets/icon-bookmark-full.svg`;
     } else {
@@ -77,12 +77,12 @@ function atualizaBookmarkClicado() {
 
   bookmarkContainers.forEach((container, index) => {
     container.addEventListener('click', () => {
-      if (movies[index].isBookmarked === true) {
+      if (tvseries[index].isBookmarked === true) {
         bookmarkIcons[index].src = `/assets/icon-bookmark-empty.svg`;
-        atualizaDados(movies[index].title);
+        atualizaDados(tvseries[index].title);
       } else {
         bookmarkIcons[index].src = `./assets/icon-bookmark-full.svg`;
-        atualizaDados(movies[index].title);
+        atualizaDados(tvseries[index].title);
       }
     });
   });
