@@ -245,7 +245,8 @@ ul img {
 }
 
 .container_imagem,
-.container_imagem_resultado {
+.container_imagem_resultado,
+.container_img_pesquisa {
   width: 164px;
   height: 110px;
   border-radius: 8px;
@@ -303,4 +304,10 @@ ul img {
 
 .container_cards_recomendados {
   margin-bottom: 1rem;
+}
+
+#container_pesquisa_cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 }
