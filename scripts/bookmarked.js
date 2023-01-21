@@ -32,15 +32,21 @@ function criaOsCards() {
   let containersPai = document.querySelectorAll(
     '.container_cards_recomendados'
   );
+  let containerCardsFilmes = document.getElementById(
+    'container_cards_filmes_bookmark'
+  );
+  let containerSeriesPai = document.getElementById(
+    'container_cards_series_bookmark'
+  );
 
   let arraytodos = [...arrayTv, ...arrayFilmes];
-  containersPai[0].innerHTML = '';
-  containersPai[1].innerHTML = '';
+  containerCardsFilmes.innerHTML = '';
+  containerSeriesPai.innerHTML = '';
 
   //Criando os cards dos cards dos programas de tv bookmarked
 
   arrayTv.map((objeto) => {
-    containersPai[0].innerHTML += `<div class="card_resultado">
+    containerCardsFilmes.innerHTML += `<div class="card_resultado">
     <div class="bookmark_container">
       <img src="./assets/icon-bookmark-${
         objeto.isBookmarked ? 'full' : empty
@@ -70,7 +76,7 @@ function criaOsCards() {
   });
 
   arrayFilmes.map((objeto) => {
-    containersPai[1].innerHTML += `<div class="card_resultado">
+    containerSeriesPai.innerHTML += `<div class="card_resultado">
     <div class="bookmark_container">
       <img src="./assets/icon-bookmark-full.svg" alt="" class="bookmark_icon" />
     </div>

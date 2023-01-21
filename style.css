@@ -18,7 +18,6 @@ body {
   min-height: 667px;
   width: 375px;
   margin-bottom: 2rem;
-  border: 1px solid orange;
 }
 
 /*! nav ----------------------------------------------------- */
@@ -320,11 +319,20 @@ ul img {
 /* ! Container Filmes --------------------------------------------- */
 #container_cards_filmes {
   width: 343px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   display: flex;
   gap: 16px 10px;
   flex-wrap: wrap;
-  border: 1px solid red;
+}
+
+/* ! Containers filmes e movies bookmarks ---------------------------------- */
+
+#container_cards_filmes_bookmark,
+#container_cards_series_bookmark {
+  display: flex;
+  width: 343px;
+  flex-wrap: wrap;
+  gap: 16px 10px;
 }
 
 /* ! Media Queries ----------------------------------------------- */
@@ -418,6 +426,11 @@ ul img {
     width: 719px;
   }
 
+  #container_cards_filmes {
+    width: 719px;
+    column-gap: 27px;
+  }
+
   #container_cards_recomendados {
     row-gap: 24px;
   }
@@ -457,9 +470,26 @@ ul img {
     width: 220px;
     height: 192px;
   }
+
+  #container_cards_filmes_bookmark .card_resultado,
+  #container_cards_series_bookmark .card_resultado {
+  }
+
+  /* ! Container movies and tvseries bookmark */
+
+  #container_cards_filmes_bookmark,
+  #container_cards_series_bookmark {
+    width: 719px;
+    gap: 24px 27px;
+  }
 }
 
 @media (min-width: 1440px) {
+  #container_cards_filmes_bookmark,
+  #container_cards_series_bookmark {
+    width: 1240px;
+  }
+
   #container {
     width: 1440px;
     position: relative;
@@ -537,10 +567,27 @@ ul img {
 
   #container_pai_filmes {
     width: 1240px;
-    border: 1px solid red;
+    margin-left: 160px;
   }
 
   .container_filmes {
     display: flex;
+  }
+
+  #container_cards_filmes {
+    width: 1240px;
+    column-gap: 27px;
+  }
+
+  #container_pai_filmes {
+    position: absolute;
+    top: 70px;
+    left: -15px;
+  }
+
+  #container_pai_tv {
+    position: absolute;
+    top: 400px;
+    left: 130px;
   }
 }
