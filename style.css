@@ -16,9 +16,9 @@ body {
 
 #container {
   min-height: 667px;
-  border: 1px solid lightgray;
   width: 375px;
   margin-bottom: 2rem;
+  border: 1px solid orange;
 }
 
 /*! nav ----------------------------------------------------- */
@@ -317,6 +317,16 @@ ul img {
   gap: 15px;
 }
 
+/* ! Container Filmes --------------------------------------------- */
+#container_cards_filmes {
+  width: 343px;
+  margin: 0 auto;
+  display: flex;
+  gap: 16px 10px;
+  flex-wrap: wrap;
+  border: 1px solid red;
+}
+
 /* ! Media Queries ----------------------------------------------- */
 @media (min-width: 1024px) {
   /* Container -------- */
@@ -436,6 +446,7 @@ ul img {
     place-content: flex-start;
     gap: 16px 29px;
     padding-left: 10px;
+    display: none;
   }
 
   #container_cards_resultado {
@@ -446,4 +457,90 @@ ul img {
     width: 220px;
     height: 192px;
   }
-} ;
+}
+
+@media (min-width: 1440px) {
+  #container {
+    width: 1440px;
+    position: relative;
+  }
+
+  nav {
+    width: 96px;
+    height: 960px;
+    flex-direction: column;
+    padding: 35.41px 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  nav #nav_icons_container {
+    flex-direction: column;
+    row-gap: 40px;
+  }
+
+  /* ! Container Pesquisa ---------------------------- */
+
+  #container_pesquisa {
+    position: absolute;
+
+    top: -7px;
+    left: 116px;
+  }
+
+  /* ! Container em alta ----------------------------- */
+  #container_em_alta {
+    height: 295px;
+    width: 1500px;
+    margin-left: 150px;
+    margin: 90px 0 0 150px;
+  }
+
+  #container_recomendado {
+    position: absolute;
+    width: 1240px;
+    top: 1200px;
+    left: 53%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* ! Container cards recomendados --------------------- */
+
+  #container_cards_recomendados {
+    row-gap: 32px;
+    column-gap: 40px;
+  }
+
+  .card_uso_geral,
+  .card_resultado {
+    width: 280px;
+    height: 226px;
+  }
+
+  .container_imagem,
+  .container_imagem_resultado,
+  .container_img_pesquisa {
+    width: 280px;
+    height: 174px;
+  }
+
+  #container_resultado_pesquisa {
+    margin-left: 140px;
+    margin: 100px 0 0 140px;
+  }
+
+  #container_cards_resultado .card_resultado {
+    width: 280px;
+    height: 174px;
+  }
+
+  #container_pai_filmes {
+    width: 1240px;
+    border: 1px solid red;
+  }
+
+  .container_filmes {
+    display: flex;
+  }
+}

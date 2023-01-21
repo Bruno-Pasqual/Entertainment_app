@@ -12,7 +12,7 @@ function comecaScript() {
 }
 
 function criaCards() {
-  let containerPai = document.getElementById('container_cards_recomendados');
+  let containerPai = document.getElementById('container_cards_filmes');
   // ---
   movies = dados.filter((objeto) => {
     return objeto.category === 'Movie';
