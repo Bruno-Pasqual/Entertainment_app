@@ -237,7 +237,6 @@ ul img {
 #container_cards_recomendados {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   row-gap: 16px;
 }
 
@@ -333,6 +332,27 @@ ul img {
   width: 343px;
   flex-wrap: wrap;
   gap: 16px 10px;
+}
+
+/* ! Scrollbar --------------------------------------------------- */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(41, 39, 39);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(167, 24, 24);
 }
 
 /* ! Media Queries ----------------------------------------------- */
@@ -589,5 +609,14 @@ ul img {
     position: absolute;
     top: 400px;
     left: 130px;
+  }
+
+  nav #nav_icons_container {
+    margin-bottom: 450px;
+  }
+
+  .bookmark_container:hover {
+    background: rgba(16, 20, 30, 0.872);
+    cursor: pointer;
   }
 }
