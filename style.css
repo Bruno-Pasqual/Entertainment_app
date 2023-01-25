@@ -18,6 +18,7 @@ body {
   min-height: 667px;
   width: 375px;
   margin-bottom: 2rem;
+  border: 1px solid red;
 }
 
 /*! nav ----------------------------------------------------- */
@@ -237,7 +238,7 @@ ul img {
 #container_cards_recomendados {
   display: flex;
   flex-wrap: wrap;
-  row-gap: 16px;
+  gap: 16px 13px;
 }
 
 .card_uso_geral,
@@ -259,7 +260,7 @@ ul img {
   margin-bottom: 8px;
 }
 
-.container_informacoes_recomendadom,
+.container_informacoes_recomendados,
 .container_informacoes_resultado {
   width: 160px;
   height: 38px;
@@ -331,7 +332,7 @@ ul img {
   display: flex;
   width: 343px;
   flex-wrap: wrap;
-  gap: 16px 10px;
+  gap: 16px 15px;
 }
 
 /* ! Scrollbar --------------------------------------------------- */
